@@ -1,0 +1,83 @@
+* {
+  box-sizing: border-box;
+}
+
+.top-page-header {
+  width: 100vw;
+  background-image: image-url('header.png');
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: top center;
+  padding: 2vh 15vw;
+  display: flex;
+  flex-direction: column;
+}
+
+.search-bar-contents {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.furima-icon {
+  width: 10vw;
+  margin-right: 10vw;
+}
+
+.nav {
+  font-size: 18px;
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  width: 100%;
+  padding: 1vh 0;
+}
+
+.lists-left {
+  display: flex;
+  min-width: 200px;
+
+}
+
+.category-list {
+  text-decoration: none;
+  margin-right: 3vw;
+  color: whitesmoke;
+}
+
+.brand-list {
+  text-decoration: none;
+  margin-right: 3vw;
+  color: whitesmoke;
+}
+
+.lists-right {
+  display: flex;
+  list-style: none;
+  align-items: flex-end;
+}
+
+
+.user-nickname {
+  text-decoration: none;
+  margin-right: 3vw;
+  color: whitesmoke;
+  font-weight: bold;
+}
+
+
+.logout {
+  text-decoration: none;
+  color: whitesmoke;
+}
+
+.login {
+  text-decoration: none;
+  margin-right: 3vw;
+  color: whitesmoke;
+}
+
+.sign-up {
+  text-decoration: none;
+  color: whitesmoke;
+}
