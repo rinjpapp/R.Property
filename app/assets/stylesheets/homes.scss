@@ -66,7 +66,7 @@ main {
 }
 
 .user-access {
-  width: 10%;
+  width: fit-content;
   height: 50px;
   margin: auto;
   background-color: #3ccace;
@@ -83,6 +83,27 @@ main {
   font-weight: bold;
   color: whitesmoke;
   margin: auto;
+}
+
+.user-input {
+  margin: 0 auto;
+  width: fit-content;
+  height: 80px;
+  justify-content: center;
+  align-content: center;
+}
+
+.user-input-link {
+  background-color: #3ccace;
+  margin: 0 auto;
+  border-radius: 10px;
+  width: fit-content;
+}
+
+.label-btn {
+  color: #fff;
+  font-size: 20px;
+  margin-right: 20px;
 }
 // ユーザー登録とログインボタン //
 
@@ -203,3 +224,4 @@ footer {
   font-weight: bold;
   font-size: 40px;
 }
+// ユーザー用ヘッダー //
