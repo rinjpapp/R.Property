@@ -3,6 +3,15 @@ class ApplicationController < ActionController::Base
   before_action :configure_permitted_parameters, if: :devise_controller?
 
 
+  def after_sign_in_path_for(resource)
+    case @user.status_id
+    when 2
+      residents_path
+    when 3
+      root_path
+    end
+  end
+
   private
 
   def basic_auth
