@@ -16,10 +16,10 @@
       <label class="label-btn" for="checkbox_2">申込者の方</label>
       <table class="user-input-link">
         <tr>
-          <td id="tr1" style="display:block;"><%= link_to "Register", "#", class: "user-access-link" %></td>
+          <td id="tr1" style="display:block;"><%= link_to "Register", new_user_registration_path, class: "user-access-link" %></td>
         </tr>
         <tr>
-          <td id="tr2" style="display:none;"><%= link_to "Apply", "#", class: "user-access-link" %></td>
+          <td id="tr2" style="display:none;"><%= link_to "Apply", new_user_registration_path, class: "user-access-link" %></td>
         </tr>
       </table>
     </div>
@@ -27,7 +27,7 @@
       <h2 class="are-you-member">メンバーの方はこちら</h2>
     </div>
     <div class="user-access">
-      <%= link_to "Log in", "#", class: "user-access-link" %>
+      <%= link_to "Log in", new_user_session_path, class: "user-access-link" %>
     </div>
     <div class="page-line"></div>
   <%# //ユーザー登録とログインボタン// %>
