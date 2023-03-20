@@ -8,4 +8,5 @@ Rails.application.routes.draw do
   end
   root to: 'homes#index'
   resources :residents, only: :index
+  resources :applicants, only: :index
 end
