@@ -1,0 +1,55 @@
+<h2>個人情報登録</h2>
+
+<%= form_for @individual do |f| %>
+  <%= render "devise/shared/error_messages", resource: @individual %>
+
+  <div class="field">
+    <%= f.label :"苗字" %><br />
+    <%= f.text_field :last_name, autofocus: true, placeholder: "山田" %>
+  </div>
+
+  <div class="field">
+    <%= f.label :"名前" %><br />
+    <%= f.text_field :first_name, autofocus: true, placeholder: "太郎" %>
+  <div class="field">
+    <%= f.label :"苗字(カナ)" %><br />
+    <%= f.text_field :last_name_kana, autofocus: true, placeholder: "ヤマダ" %>
+  </div>
+
+  <div class="field">
+    <%= f.label :"名前(カナ)" %><br />
+    <%= f.text_field :first_name_kana, autofocus: true, placeholder: "タロウ" %>
+  </div>
+
+    <div class="field">
+    <%= f.label :"生年月日" %><br />
+      <%= raw sprintf(
+                  f.date_select(
+                    :birth_day,
+                    class:'select-birth',
+                    id:"birth-date",
+                    use_month_numbers: true,
+                    prompt:'--',
+                    start_year: 1930,
+                    end_year: (Time.now.year - 5),
+                    date_separator: '%s'),
+                  "<p> 年 </p>", "<p> 月 </p>") + "<p> 日 </p>" %>
+  </div>
+
+  <div class="field">
+    <%= f.label :"タイプ" %><br />
+    <%= f.collection_select :phone_id, Phone.all, :id, :name, {}, {class:"collection-select-phone", id:"phone"} %>
+  </div>
+
+  <div class="field">
+    <%= f.label :"電話番号（ハイフンなし）" %><br />
+    <%= f.text_field :phone_number, placeholder: "0801234567" %>
+  </div>
+  
+
+  <div class="actions">
+    <%= f.submit "Sign up" %>
+  </div>
+<% end %>
+
+<%= render "devise/shared/links" %>
