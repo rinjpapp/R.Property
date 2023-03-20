@@ -2,13 +2,21 @@ class ApplicationController < ActionController::Base
   before_action :basic_auth
   before_action :configure_permitted_parameters, if: :devise_controller?
 
+  def after_sign_up_path_for(resource)
+    case @user.status_id
+    when 2
+      residents_path
+    when 3
+      applicants_path
+    end
+  end
 
   def after_sign_in_path_for(resource)
     case @user.status_id
     when 2
       residents_path
     when 3
-      root_path
+      applicants_path
     end
   end
 
