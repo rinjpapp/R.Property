@@ -11,4 +11,6 @@ class User < ApplicationRecord
     validates :status_id, numericality: { other_than: 1, message: "can't be blank" }
     validates :nickname
   end
+
+  has_one :individual
 end
