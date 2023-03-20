@@ -21,6 +21,18 @@ class Users::RegistrationsController < Devise::RegistrationsController
     render :new_individual
   end
 
+  def create_individual
+    @user = User.new(session["devise.regist_data"]["user"])
+    @individual = Individual.new(individual_params)
+      unless @individual.valid?
+        render :new_individual and return
+      end
+    @user.build_individual(@individual.attributes)
+    @user.save
+    session["devise.regist_data"]["user"].clear
+    sign_in(:user, @user)
+  end
+
   # GET /resource/edit
   # def edit
   #   super
@@ -44,6 +56,12 @@ class Users::RegistrationsController < Devise::RegistrationsController
   # def cancel
   #   super
   # end
+
+  private
+
+  def individual_params
+    params.require(:individual).permit(:last_name, :first_name, :last_name_kana, :first_name_kana, :birth_day, :phone_id, :phone_number)
+  end
 
   # protected
 
