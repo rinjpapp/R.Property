@@ -7,4 +7,5 @@ Rails.application.routes.draw do
     post 'individuals', to: 'users/registrations#create_individual'
   end
   root to: 'homes#index'
+  resources :residents, only: :index
 end
