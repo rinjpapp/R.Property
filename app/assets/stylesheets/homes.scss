@@ -1,158 +1,227 @@
-a {
-  text-decoration: none;
+* {
+  box-sizing: border-box;
 }
 
-.main {
-  background: hsl(151, 100%, 92%);
-}
-
-/* R.PROPERTYが選ばれる3つの理由部分 */
-.select-reason-contents {
-  padding: 5vh 15vw;
-}
-
-.select-reason-contents>.title {
-  text-align: center;
-  font-size: 3.5vh;
-  font-weight: bold;
-  margin-bottom: 5vh;
-  position: relative;
-}
-
-.select-reason-contents>.title::after {
-  content: '';
-  width: 70px;
-  height: 4px;
-  background-color: #3ccace;
-  position: absolute;
-  bottom: -10px;
-  left: 50%;
-  transform: translateX(-50%);
-}
-
-.reason-lists {
-  display: flex;
-  justify-content: space-between;
-  flex-wrap: wrap;
-}
-
-.reason-lists>.list {
-  width: 33vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  position: relative;
-}
-
-.list-pict {
-  margin-bottom: 20px;
-  width: 100%;
-}
-
-.reason-list-number {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 60px;
-  height: 60px;
-  font-size: 30px;
-  text-align: center;
-  line-height: 60px;
-  background-color: #3ccace;
-  color: #fff;
-}
-
-.reason-list-text {
-  font-weight: bold;
-  font-size: 24px;
-  line-height: 50px;
-}
-
-.reason-list-blue-text {
-  color: #3ccace;
-}
-
-.reason-list-description {
-  font-size: 18px;
-  margin-top: 20px;
-}
-
-/* //R.PROPERTYが選ばれる3つの理由部分 */
-
-
-/* 画面中央の帯部分*/
-.ad-contents {
+// ページ全体のバックイメージ
+.main-property-image {
   width: 100vw;
-  background-image: image-url('furima-header02.png');
+  max-height: fit-content;
+  background-image: image-url('header.png');
   background-size: cover;
   background-repeat: no-repeat;
   background-position: top center;
   display: flex;
   flex-direction: column;
-  align-items: flex-start;
-  justify-content: center;
-  padding: 5vh 15vw;
-  color: #fff;
-  text-shadow: 0 0 5px rgba(0, 0, 0, 0.9);
 }
 
-.ad-title {
-  font-size: 5vh;
-  margin-bottom: 2vh;
-}
-
-.ad-explain {
-  font-size: 2.5vh;
-  line-height: 30px;
-}
-/* //画面中央の帯部分 */
-
-/* R.PROPERTYの特徴 */
-.feature-contents {
-  padding: 5vh 15vw;
-}
-
-.feature-contents>.title {
+.property-logo {
+  font-size: 10vh;
+  font-weight: 800;
+  color: #d9ffe8;
   text-align: center;
-  font-size: 3.5vh;
-  font-weight: bold;
-  margin-bottom: 5vh;
-  position: relative;
-}
+  font-family: 'Zapfino', sans-serif;
+  margin: 30px auto;
+  }
 
-.feature-contents>.title::after {
-  content: '';
-  width: 70px;
-  height: 4px;
-  background-color: #3ccace;
-  position: absolute;
-  bottom: -10px;
-  left: 50%;
-  transform: translateX(-50%);
-}
+// ページ全体のバックイメージ //
 
-.feature-lists {
+header {
+  width: 90vw;
+  height: 60px;
+  margin: 0 auto;
+  background-color: #fff;
   display: flex;
-  justify-content: space-between;
-  flex-wrap: wrap;
-}
-
-.feature-lists>.list {
-  width: 33vh;
-  display: flex;
-  flex-direction: column;
+  justify-content: center;
   align-items: center;
 }
 
-.feature-list-text {
+main {
+  width: 100%;
+  height: fit-content;
+}
+
+.page-line {
+  width: 90%;
+  height: 2px;
+  background-color: #fff;
+  margin: 50px auto;
+}
+
+.space {
+  height: 500px;
+}
+
+// ユーザー登録とログインボタン
+.user-access-text {
+  width: 25%;
+  height: 60px;
+  margin: 30px auto 10px;
+  text-align: center;
+}
+
+.are-you-member {
+  font-size: 180%;
   font-weight: bold;
-  font-size: 22px;
+  color: #fff;
+}
+
+.user-access {
+  width: fit-content;
+  height: 50px;
+  margin: auto;
+  background-color: #3ccace;
+  opacity: 0.8;
+  text-align: center;
+  border-radius: 10px;
+  padding: auto;
+}
+
+.user-access-link {
+  text-decoration: none;
+  font-size: 40px;
+  font-family: 'Times New Roman', Times, serif;
+  font-weight: bold;
+  color: whitesmoke;
+  margin: auto;
+}
+
+.user-input {
+  margin: 0 auto;
+  width: fit-content;
+  height: 80px;
+  justify-content: center;
+  align-content: center;
+}
+
+.user-input-link {
+  background-color: #3ccace;
+  margin: 0 auto;
+  border-radius: 10px;
+  width: fit-content;
+}
+
+.label-btn {
+  color: #fff;
+  font-size: 20px;
+  margin-right: 20px;
+}
+// ユーザー登録とログインボタン //
+
+// 会社連絡先情報コラム
+.contact-information {
+  margin: 30px auto 10px;
+  width: 70%;
+  height: fit-content;
+  padding: 20px;
+}
+
+.contact-information-list {
+  margin-bottom: 20px;
+}
+
+.contact-logo {
+  font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+  font-weight: bold;
+  color: rgb(222, 241, 232);
+  font-size: 25px;
+  text-decoration: none;
+}
+
+.company-logo-in-contact {
+  width: 11vw;
+  opacity: 0.8;
+}
+
+.contact-information-link {
+  text-decoration: none;
+  color: rgb(222, 241, 232);
+  font-weight: bold;
+  line-height: 30px;
+}
+// 会社連絡先情報コラム //
+
+// フッター
+footer {
+  width: 90vw;
+  height: 100px;
+  margin: 0 auto 20px;
+  background-color: black;
+  opacity: 0.7;
+}
+
+.footer-link-lists {
+  display: flex;
+  justify-content: space-evenly;
+  margin: 20px auto;
+}
+
+.footer-link {
+  color: rgb(222, 241, 232);
+  text-decoration: none;
+}
+
+.link-space {
+  color: rgb(222, 241, 232);
+}
+
+.©-logo-list {
+  text-align: center;
+}
+
+.©-logo {
+  color: rgb(222, 241, 232);
+  text-decoration: none;
+}
+// フッター //
+
+// 住人用トップページ
+.resident-main-page {
+  width: 90%;
+  height: auto;
+  margin: 0 auto;
+  background-color: #fff;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.resident-main-page-left {
+  width: 45%;
+  height: 500px;
+  margin: 20px auto;
+  background-color: rgb(211, 211, 227);
+}
+
+.resident-main-page-right {
+  width: 45%;
+  height: 500px;
+  margin: 20px auto;
+  background-color: rgb(215, 193, 193);
+}
+// 住人用トップページ //
+
+// ユーザー用ヘッダー
+.user-header {
+  width: 99%;
+  height: 90%;
+  background-color: darkcyan;
+}
+
+.user-header-lists {
+  display: flex;
+  justify-content: space-evenly;
   line-height: 50px;
 }
 
-.feature-list-description {
-  font-size: 18px;
-  margin-top: 20px;
+.user-header-list {
+  font-size: 30px;
+  text-decoration: none;
+  color: rgb(206, 231, 234);
 }
 
-/* //R.PROPERTYの特徴 */
+.header-link-space {
+  color: rgb(206, 231, 234);
+  font-weight: bold;
+  font-size: 40px;
+}
+// ユーザー用ヘッダー //

@@ -1,100 +1,59 @@
-<%= render "shared/header" %>
-<div class='main'>
-  <%# R.PROPERTYが選ばれる3つの理由部分 %>
-  <div class='select-reason-contents'>
-    <h2 class='title'>
-      R.PROPERTYが選ばれる3つの理由
-    </h2>
-    <ul class='reason-lists'>
-      <li class='list'>
-        <%= image_tag "furima-intro01.png", class:"list-pict" %>
-        <span class='reason-list-number'>1</span>
-        <h3 class='reason-list-text'>
-          <span class='reason-list-blue-text'>アプリ</span>
-          で簡単物件探し
-        </h3>
-        <p class='reason-list-description'>
-          スマホで入力するだけで簡単に申し込みできる
-        </p>
-      </li>
-      <li class='list'>
-        <%= image_tag "furima-intro02.png", class:"list-pict" %>
-        <span class='reason-list-number'>2</span>
-        <h3 class='reason-list-text'>
-          <span class='reason-list-blue-text'>シンプル</span>
-          で使いやすい
-        </h3>
-        <p class='reason-list-description'>
-          めんどくさい入力は必要なく、検索も手続きもスムーズ！
-        </p>
-      </li>
-      <li class='list'>
-        <%= image_tag "furima-intro03.png", class:"list-pict" %>
-        <span class='reason-list-number'>3</span>
-        <h3 class='reason-list-text'>
-          <span class='reason-list-blue-text'>オンライン</span>
-          に対応
-        </h3>
-        <p class='reason-list-description'>
-          入居後の家賃の支払いなどもアプリひとつで！
-        </p>
-      </li>
-    </ul>
-  </div>
-  <%# /R.PROPERTYが選ばれる3つの理由部分 %>
-
-  <%# 画面中央の帯部分 %>
-  <div class='ad-contents'>
-    <h2 class='ad-title'>
-      R.PROPERTYの取り組み
-    </h2>
-    <p class='ad-explain'>
-      安心・安全な住まい
-    </p>
-    <p class='ad-explain'>
-      コミュニティのサポート
-    </p>
-    <p class='ad-explain'>
-      あなたにぴったりの部屋に出会えるかもしれません。
-    </p>
-  </div>
-  <%# /画面中央の帯部分 %>
-
-  <%# R.PROPERTYの特徴 %>
-  <div class='feature-contents'>
-    <h2 class='title'>
-      R.PROPERTYの特徴
-    </h2>
-    <ul class='feature-lists'>
-      <li class='list'>
-        <%= image_tag "furima-intro04.png", class:"list-pict" %>
-        <h3 class='feature-list-text'>
-          デジタル化に特化
-        </h3>
-        <p class='feature-list-description'>
-          スマホひとつで、いつでもどこでも簡単手続き
-        </p>
-      </li>
-      <li class='list'>
-        <%= image_tag "furima-intro05.png", class:"list-pict" %>
-        <h3 class='feature-list-text'>
-          コミュニティの充実
-        </h3>
-        <p class='feature-list-description'>
-          地元のコミュニティーを大切にしています。
-        </p>
-      </li>
-      <li class='list'>
-        <%= image_tag "furima-intro06.png", class:"list-pict" %>
-        <h3 class='feature-list-text'>
-          様々な支払いに対応
-        </h3>
-        <p class='feature-list-description'>
-          月々の家賃のお支払いは、オンラインで簡単支払い
-        </p>
-      </li>
-    </ul>
-  </div>
-  <%# /R.PROPERTYの特徴 %>
-<%= render "shared/footer" %>
-
+<div class="main-property-image">
+  <%= link_to "R.Property", root_path, class: "property-logo" %>
+  <div class="page-line"></div>
+  <header>
+  </header>
+  <main>
+    <div class="page-line"></div>
+  <%# ユーザー登録とログインボタン %>
+    <div class="user-access-text">
+      <h2 class="are-you-member">まずは会員登録をしよう</h2>
+    </div>
+    <div class="user-input">
+      <input type="checkbox" id="checkbox_1" onclick="handleCheckboxClick(this)" checked>
+      <label class="label-btn" for="checkbox_1">入居者の方</label>
+      <input type="checkbox" id="checkbox_2" onclick="handleCheckboxClick(this)">
+      <label class="label-btn" for="checkbox_2">申込者の方</label>
+      <table class="user-input-link">
+        <tr>
+          <td id="tr1" style="display:block;"><%= link_to "Register", "#", class: "user-access-link" %></td>
+        </tr>
+        <tr>
+          <td id="tr2" style="display:none;"><%= link_to "Apply", "#", class: "user-access-link" %></td>
+        </tr>
+      </table>
+    </div>
+    <div class="user-access-text">
+      <h2 class="are-you-member">メンバーの方はこちら</h2>
+    </div>
+    <div class="user-access">
+      <%= link_to "Log in", "#", class: "user-access-link" %>
+    </div>
+    <div class="page-line"></div>
+  <%# //ユーザー登録とログインボタン// %>
+    <div class="page-line"></div>
+  <%# 会社連絡先情報コラム %>
+    <div class="contact-information">
+      <ul class="contact-information-list">
+        <li><%= link_to "お問合せ", "#", class: "contact-logo" %></li>
+        <li><%= link_to "〒107-0052 東京都 港区 赤坂 5-10-123", "#", class: "contact-information-link" %></li>
+        <li><%= link_to "TEL: 080-7777-7777", "#", class: "contact-information-link" %></li>
+        <li><%= link_to "FAX: 080-7777-7777", "#", class: "contact-information-link" %></li>
+        <li><%= link_to "Email: r.property@mail.com", "#", class: "contact-information-link" %></li>
+      </ul>
+      <%= link_to image_tag("company_logo.png", class: "company-logo-in-contact"), "/" %>
+    </div>
+  <%# //会社連絡先情報コラム// %>
+  </main>
+  <footer>
+    <div class="footer-link-lists">
+      <h1 class="link-space">|</h1><%= link_to "サイトマップ", "#", class: "footer-link" %><h1 class="link-space">|</h1>
+      <%= link_to "プライバシーポリシー", "#", class: "footer-link" %><h1 class="link-space">|</h1>
+      <%= link_to "利用規約", "#", class: "footer-link" %><h1 class="link-space">|</h1>
+      <%= link_to "会社概要（運営会社)", "#", class: "footer-link" %><h1 class="link-space">|</h1>
+    </div>
+    <div class="©-logo-list">
+      <%= link_to "©2023 R.Property Co", "/", class: "©-logo" %>
+    </div>
+  </footer>
+</div>
