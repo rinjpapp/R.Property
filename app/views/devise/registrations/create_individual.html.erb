@@ -1,0 +1,7 @@
+<h2>登録が完了しました</h2>
+<% if current_user.status_id == 2 %>
+<%= link_to "住人用マイページにいく", residents_path %>
+<% elsif current_user.status_id == 3 %>
+<%= link_to "申込者用マイページにいく", applicants_path %>
+<% end %>
+
