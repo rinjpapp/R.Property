@@ -41,7 +41,21 @@
         <li><%= link_to "FAX: 080-7777-7777", "#", class: "contact-information-link" %></li>
         <li><%= link_to "Email: r.property@mail.com", "#", class: "contact-information-link" %></li>
       </ul>
-      <%= link_to image_tag("company_logo.png", class: "company-logo-in-contact"), "/" %>
+          <div class="link link-hover">
+            <%= link_to image_tag("company_logo.png", class: "company-logo-in-contact"), "/" %>
+            <div class="dropDown">
+              <ul class="dropDown__list">
+                <li class="dropDown__item">
+                  <%= link_to "login", new_admin_session_path, class: "dropDown__link" %>
+                </li>
+                <% if admin_signed_in? %>
+                <li class="dropDown__item">
+                  <%= link_to "logout", destroy_admin_session_path, class: "dropDown__link" %>
+                </li>
+                <% end %>
+              </ul>
+            </div>
+          </div>
     </div>
   <%# //会社連絡先情報コラム// %>
   </main>
