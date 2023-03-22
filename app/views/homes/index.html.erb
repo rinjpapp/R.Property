@@ -2,6 +2,11 @@
   <%= link_to "R.Property", root_path, class: "property-logo" %>
   <div class="page-line"></div>
   <header>
+  <% if admin_signed_in? %>
+    <ul class="admin-header-lists">
+      <li><%= link_to "物件投稿", new_room_path, class: "admin-header-list" %></li>
+    </ul>
+  <% end %>
   </header>
   <main>
     <div class="page-line"></div>
