@@ -12,11 +12,16 @@ class ApplicationController < ActionController::Base
   end
 
   def after_sign_in_path_for(resource)
-    case @user.status_id
-    when 2
-      residents_path
-    when 3
-      applicants_path
+    case resource
+    when Admin
+      root_path
+    when User
+      case @user.status_id
+      when 2
+        residents_path
+      when 3
+        applicants_path
+      end
     end
   end
 
