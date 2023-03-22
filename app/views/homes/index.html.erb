@@ -6,6 +6,7 @@
   <main>
     <div class="page-line"></div>
   <%# ユーザー登録とログインボタン %>
+  <% unless user_signed_in? || admin_signed_in? %>
     <div class="user-access-text">
       <h2 class="are-you-member">まずは会員登録をしよう</h2>
     </div>
@@ -29,8 +30,9 @@
     <div class="user-access">
       <%= link_to "Log in", new_user_session_path, class: "user-access-link" %>
     </div>
+    <% end %>
+    <%# //ユーザー登録とログインボタン// %>
     <div class="page-line"></div>
-  <%# //ユーザー登録とログインボタン// %>
     <div class="page-line"></div>
   <%# 会社連絡先情報コラム %>
     <div class="contact-information">
@@ -45,12 +47,13 @@
             <%= link_to image_tag("company_logo.png", class: "company-logo-in-contact"), "/" %>
             <div class="dropDown">
               <ul class="dropDown__list">
-                <li class="dropDown__item">
-                  <%= link_to "login", new_admin_session_path, class: "dropDown__link" %>
-                </li>
                 <% if admin_signed_in? %>
                 <li class="dropDown__item">
-                  <%= link_to "logout", destroy_admin_session_path, class: "dropDown__link" %>
+                  <%= link_to "logout", destroy_admin_session_path, method: :delete, class: "dropDown__link" %>
+                </li>
+                <% else %>
+                <li class="dropDown__item">
+                  <%= link_to "login", new_admin_session_path, class: "dropDown__link" %>
                 </li>
                 <% end %>
               </ul>
