@@ -5,6 +5,10 @@ class RoomsController < ApplicationController
     
   end
 
+  def create
+    
+  end
+
   private
 
   def authenticate_admin!
