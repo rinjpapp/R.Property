@@ -10,6 +10,6 @@ class Building < ApplicationRecord
     validates :address
     validates :access
     validates :build_year
-    validates :story
+    validates :story, numericality: { only_integer: true }
   end
 end
