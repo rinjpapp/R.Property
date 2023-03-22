@@ -12,4 +12,7 @@ class Building < ApplicationRecord
     validates :build_year
     validates :story, numericality: { only_integer: true }
   end
+
+  extend ActiveHash::Associations::ActiveRecordExtensions
+  belongs_to :prefecture
 end
