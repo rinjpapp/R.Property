@@ -6,7 +6,14 @@ class RoomsController < ApplicationController
   end
 
   def create
-    
+    @room = Room.new(room_params)
+    if @room.save!
+      flash[:success] = "商品を登録しました"
+      redirect_to root_path
+    else
+      flash.now[:danger] = "登録に失敗しました"
+      render :new
+    end
   end
 
   private
@@ -25,5 +32,10 @@ class RoomsController < ApplicationController
         redirect_to root_path
       end
     end
+  end
+
+  def room_params
+    params.require(:room).permit(:room_number, :rent, :management_fee, :deposit, :key_money, :layout, :floor_area,
+                                 :available_date, :image).merge(admin_id: current_admin.id, building_id: 1)
   end
 end
