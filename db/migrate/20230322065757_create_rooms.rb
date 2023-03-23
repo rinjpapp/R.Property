@@ -9,7 +9,7 @@ class CreateRooms < ActiveRecord::Migration[6.0]
       t.string     :layout,         null: false
       t.decimal    :floor_area,     null: false, precision: 4, scale: 1
       t.date       :available_date, null: false
-      t.bigint     :admin,          null: false, foreign_key: true
+      t.references :admin,          null: false, foreign_key: true
       t.timestamps
     end
   end

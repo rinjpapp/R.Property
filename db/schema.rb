@@ -54,9 +54,10 @@ ActiveRecord::Schema.define(version: 2023_03_22_111919) do
     t.string "access", null: false
     t.date "build_year", null: false
     t.integer "story", null: false
-    t.bigint "admin", null: false
+    t.bigint "admin_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.index ["admin_id"], name: "index_buildings_on_admin_id"
   end
 
   create_table "individuals", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
@@ -82,10 +83,11 @@ ActiveRecord::Schema.define(version: 2023_03_22_111919) do
     t.string "layout", null: false
     t.decimal "floor_area", precision: 4, scale: 1, null: false
     t.date "available_date", null: false
-    t.bigint "admin", null: false
+    t.bigint "admin_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.bigint "building_id", null: false
+    t.index ["admin_id"], name: "index_rooms_on_admin_id"
     t.index ["building_id"], name: "index_rooms_on_building_id"
   end
 
@@ -104,6 +106,8 @@ ActiveRecord::Schema.define(version: 2023_03_22_111919) do
   end
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
+  add_foreign_key "buildings", "admins"
   add_foreign_key "individuals", "users"
+  add_foreign_key "rooms", "admins"
   add_foreign_key "rooms", "buildings"
 end
