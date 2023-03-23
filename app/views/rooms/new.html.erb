@@ -1,0 +1,79 @@
+
+<div class="rooms-upload-main">
+<h2 class="rooms-upload-title">物件の情報を入力</h2>
+<%= form_with model: @room, url: rooms_path, local: true do |f| %>
+
+    <%# <%= render 'shared/error_messages', model: f.object %>
+
+    <%# 物件画像 %>
+  <div class="img-upload">
+    <div class="weight-bold-text">
+      物件画像
+    </div>
+    <div class="click-upload">
+      <p>
+        クリックしてファイルをアップロード
+      </p>
+      <%= f.file_field :image, id:"item-image" %>
+    </div>
+  </div>
+    <%# /物件画像 %>
+    <%# 物件説明 %>
+  <div class="new-rooms">
+    <div class="weight-bold-text">
+      部屋番号
+      <span class="indispensable">必須</span>
+    </div>
+    <%= f.text_field :room_number, class:"rooms-text", id:"room-number", placeholder:"1010" %>
+    <div class="weight-bold-text">
+      家賃
+      <span class="indispensable">必須</span>
+    </div>
+    <%= f.text_field :rent, class:"rooms-text", id:"rent", placeholder:"152,000" %>
+    <div class="weight-bold-text">
+      管理共益費等
+      <span class="indispensable">必須</span>
+    </div>
+    <%= f.text_field :management_fee, class:"rooms-text", id:"management_fee", placeholder:"10,000" %>
+    <div class="weight-bold-text">
+      敷金
+      <span class="indispensable">必須</span>
+    </div>
+    <%= f.text_field :deposit, class:"rooms-text", id:"deposit", placeholder:"152,000" %>
+    <div class="weight-bold-text">
+      礼金
+      <span class="indispensable">必須</span>
+    </div>
+    <%= f.text_field :key_money, class:"rooms-text", id:"key_money", placeholder:"304,000" %>
+    <div class="weight-bold-text">
+      間取り
+      <span class="indispensable">必須</span>
+    </div>
+    <%= f.text_field :layout, class:"rooms-text", id:"layout", placeholder:"1LDK" %>
+    <div class="weight-bold-text">
+      専有面積
+      <span class="indispensable">必須</span>
+    </div>
+    <%= f.text_field :floor_area, class:"rooms-text", id:"floor_area", placeholder:"31.0" %>
+    <div class="weight-bold-text">
+      <%= f.label :"入居可能日" %><span class="indispensable">必須</span><br />
+        <%= raw sprintf(
+                  f.date_select(
+                    :available_date,
+                    discard_day: true,
+                    use_month_numbers: true,
+                    prompt:'--',
+                    start_year: 1990,
+                    end_year: (Time.now.year + 2),
+                    date_separator: '%s'),
+                  "<p> 年 </p>") + "<p> 月 </p>" %>
+  </div>
+    <%# /物件説明 %>
+    <%# 下部ボタン %>
+    <div class="sell-btn-contents">
+      <%= f.submit "アップロードする" ,class:"upload-btn" %>
+      <%=link_to 'もどる', root_path, class:"back-btn" %>
+    </div>
+    <%# /下部ボタン %>
+</div>
+<% end %>
