@@ -1,0 +1,79 @@
+
+<div class="rooms-upload-main">
+<h2 class="rooms-upload-title">建物の情報を入力</h2>
+<%= form_with model: @building, url: buildings_path, local: true do |f| %>
+
+    <%# <%= render 'shared/error_messages', model: f.object %>
+
+    <%# 物件画像 %>
+  <div class="img-upload">
+    <div class="weight-bold-text">
+      物件画像
+    </div>
+    <div class="click-upload">
+      <p>
+        クリックしてファイルをアップロード
+      </p>
+      <%= f.file_field :image, id:"item-image" %>
+    </div>
+  </div>
+    <%# /物件画像 %>
+    <%# 物件説明 %>
+  <div class="new-building">  
+    <div class="weight-bold-text">
+        建物名
+      <span class="indispensable">必須</span>
+    </div>
+    <%= f.text_field :building_name, class:"buildings-text", id:"building_name", placeholder:"六本木ヒルズ" %>
+    <div class="weight-bold-text">
+        郵便番号
+      <span class="indispensable">必須</span>
+    </div>
+    <%= f.text_field :post_code, class:"buildings-text", id:"post_code", placeholder:"123-4567" %>
+    <div class="weight-bold-text">
+        都道府県
+      <span class="indispensable">必須</span>
+    </div>
+    <%= f.collection_select(:prefecture_id, Prefecture.all, :id, :name, {}, {class:"select-box", id:"prefecture_id"}) %>
+    <div class="weight-bold-text">
+        市区町村
+      <span class="indispensable">必須</span>
+    </div>
+    <%= f.text_field :city, class:"buildings-text", id:"city", placeholder:"港区" %>
+    <div class="weight-bold-text">
+        番地
+      <span class="indispensable">必須</span>
+    </div>
+    <%= f.text_field :address, class:"buildings-text", id:"address", placeholder:"１−１" %>
+    <div class="weight-bold-text">
+        アクセス
+      <span class="indispensable">必須</span>
+    </div>
+    <%= f.text_field :access, class:"buildings-text", id:"access", placeholder:"〇〇駅から徒歩約〇分" %>
+    <div class="weight-bold-text">
+      <%= f.label :"築年月" %><span class="indispensable">必須</span><br />
+        <%= raw sprintf(
+                  f.date_select(
+                    :build_year,
+                    discard_day: true,
+                    use_month_numbers: true,
+                    prompt:'--',
+                    start_year: 1990,
+                    end_year: (Time.now.year + 2),
+                    date_separator: '%s'),
+                  "<p> 年 </p>") + "<p> 月 </p>" %>
+      </div>
+    <div class="weight-bold-text">
+        総階数
+      <span class="indispensable">必須</span>
+    </div>
+    <%= f.text_field :story, class:"buildings-text", id:"story", placeholder:"10" %>
+    <%# /物件説明 %>
+    <%# 下部ボタン %>
+    <div class="sell-btn-contents">
+      <%= f.submit "アップロードする" ,class:"upload-btn" %>
+      <%=link_to 'もどる', root_path, class:"back-btn" %>
+    </div>
+    <%# /下部ボタン %>
+</div>
+<% end %>
