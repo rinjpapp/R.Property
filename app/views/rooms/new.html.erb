@@ -2,6 +2,7 @@
 <div class="rooms-upload-main">
 <h2 class="rooms-upload-title">物件の情報を入力</h2>
 <%= form_with model: @room, url: rooms_path, local: true do |f| %>
+<%# <%= form_with model: @room, @building, url: rooms_path, local: true do |f| %>
 
     <%# <%= render 'shared/error_messages', model: f.object %>
 
@@ -18,6 +19,11 @@
     </div>
   </div>
     <%# /物件画像 %>
+<div class="weight-bold-text">
+    建物名
+  <span class="indispensable">必須</span>
+</div>
+<%= f.collection_select :building_id, Building.all, :id, :building_name, { prompt: '選択してください' }, class: "rooms-select" %>
     <%# 物件説明 %>
   <div class="new-rooms">
     <div class="weight-bold-text">
