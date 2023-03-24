@@ -17,4 +17,5 @@ Rails.application.routes.draw do
   resources :residents, only: :index
   resources :applicants, only: :index
   resources :rooms, only: [:new, :create]
+  resources :buildings, only: [:new, :create]
 end
