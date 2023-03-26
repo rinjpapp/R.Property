@@ -37,10 +37,10 @@ class RoomsController < ApplicationController
 
   def room_params
     params.require(:room).permit(:room_number, :rent, :management_fee, :deposit, :key_money, :layout, :floor_area,
-                                 :available_date, :image).merge(admin_id: current_admin.id, building_id: @building.id)
+                                 :available_date, :image, :building_id).merge(admin_id: current_admin.id)
   end
 
   def set_building
-    @building = Building.find_by(params[:id])
+    @building = Building.find_by(id: params[:room])
   end
 end
