@@ -1,0 +1,19 @@
+<h3>検索ページ</h3>
+<h3><%= link_to 'トップページへ戻る', root_path%></h3>
+<div class='room-contents' id="detailed-search-result-wrapper">
+  <%= search_form_for @q, url: search_homes_path, html: {id: "detailed-search-form"} do |f| %>
+    <%= f.submit '検索' %>
+  <% end %>
+  <ul class='item-lists' id="detailed-search-result">
+    <% @rooms.each do |r| %>
+      <li class='list'>
+        <div class="posted-content">
+          <%= image_tag r.image %><br>
+          <%= r.layout %><br>
+          <%= r.building.building_name %><br>
+          <%# <%= link_to '詳細', item_path(item.id) %>
+        </div>
+      </li>
+    <% end %>
+  </ul>
+</div>
