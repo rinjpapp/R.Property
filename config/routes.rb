@@ -18,4 +18,9 @@ Rails.application.routes.draw do
   resources :applicants, only: :index
   resources :rooms, only: [:new, :create]
   resources :buildings, only: [:new, :create]
+  resources :homes, only: :show do
+    collection do
+      get 'search'
+    end
+  end
 end
