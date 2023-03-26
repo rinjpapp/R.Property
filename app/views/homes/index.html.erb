@@ -8,6 +8,11 @@
       <li><%= link_to "建物情報", new_building_path, class: "admin-header-list" %></li>
     </ul>
   <% end %>
+  <%= form_tag(search_homes_path, method: :get) do %>
+    <%= text_field_tag :keyword, params[:keyword], placeholder: "キーワードを入力" %>
+    <%# <%= select_tag :category_id, options_from_collection_for_select(Category.all, :id, :name, params[:category_id]), include_blank: true %>
+    <%= submit_tag "検索" %>
+  <% end %>
   </header>
   <main>
     <div class="page-line"></div>
