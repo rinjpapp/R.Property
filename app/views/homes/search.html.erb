@@ -2,6 +2,16 @@
 <h3><%= link_to 'トップページへ戻る', root_path%></h3>
 <div class='room-contents' id="detailed-search-result-wrapper">
   <%= search_form_for @q, url: search_homes_path, html: {id: "detailed-search-form"} do |f| %>
+    <div class="search-field">
+      <%= f.label :layout, '部屋のタイプ' %><br>
+      <%= f.text_field :layout, placeholder: '部屋のタイプ' %>
+    </div>
+    <div class="search-field">
+      <%= f.label :rent_gteq, '家賃'%><br>
+      <%= f.number_field :rent_gteq %> 円以上
+      <br>
+      <%= f.number_field :rent_lteq %> 円以下
+    </div>
     <%= f.submit '検索' %>
   <% end %>
   <ul class='item-lists' id="detailed-search-result">
