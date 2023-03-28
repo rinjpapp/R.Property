@@ -8,10 +8,20 @@
       <li><%= link_to "建物情報", new_building_path, class: "admin-header-list" %></li>
     </ul>
   <% end %>
-  <%= form_tag(search_homes_path, method: :get) do %>
-    <%= text_field_tag :keyword, params[:keyword], placeholder: "キーワードを入力" %>
-    <%# <%= select_tag :category_id, options_from_collection_for_select(Category.all, :id, :name, params[:category_id]), include_blank: true %>
-    <%= submit_tag "検索" %>
+  <%= search_form_for @q, url: search_homes_path, html: {id: "detailed-search-form"} do |f| %>
+      <div class="search-field">
+        <%= f.label :layout, '部屋の間取りから探す' %><br>
+        <%= f.text_field :layout, placeholder: '例）2LDK' %>
+      </div>
+      <div class="search-field">
+        <%= f.label :rent_gteq, '家賃から探す'%><br>
+        <%= f.number_field :rent_gteq %> 円以上 〜 <%= f.number_field :rent_lteq %> 円以下
+      </div>
+      <div class="search-field">
+        <%= f.label :building_prefecture_id_in, '地域から探す' %><br>
+        <%= f.collection_select(:building_prefecture_id_in, Prefecture.all, :id, :name, {include_blank: "---"}) %>
+      </div>
+    <%= f.submit '検索' %>
   <% end %>
   </header>
   <main>
