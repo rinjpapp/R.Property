@@ -272,6 +272,13 @@ footer {
 
 /* 部屋一覧 */
 
+.sort-link{
+  text-decoration: none;
+  margin-left: 2vw;
+  background-color: #dbf1f2;
+  color: black;
+}
+
 .room-contents {
   display: flex;
   flex-direction: column;
@@ -325,4 +332,4 @@ footer {
   justify-content: space-between;
 }
 
-/* //商品一覧 */
+/* //部屋一覧 */

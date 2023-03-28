@@ -23,6 +23,18 @@
       </div>
     <%= f.submit '検索' %>
   <% end %>
+  <ul class="sort-links">
+    <li><%= link_to '入居日が遅い順', search_homes_path(latest: "true"), class: 'sort-link' %></li>
+    <li><%= link_to '入居日が早い順', search_homes_path(old: "true"), class: 'sort-link' %></li>
+  </ul>
+  <ul class="sort-links">
+    <li><%= link_to '築年数が浅い順', search_homes_path(newest: "true"), class: 'sort-link' %></li>
+    <li><%= link_to '築年数が古い順', search_homes_path(oldest: "true"), class: 'sort-link' %></li>
+  </ul>
+  <ul class="sort-links">
+    <li><%= link_to '家賃が高い順', search_homes_path(highest: "true"), class: 'sort-link' %></li>
+    <li><%= link_to '家賃が低い順', search_homes_path(lowest: "true"), class: 'sort-link' %></li>
+  </ul>
   </header>
   <div class="page-line"></div>
   <div class='room-contents'>
