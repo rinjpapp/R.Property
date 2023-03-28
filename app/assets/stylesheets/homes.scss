@@ -27,12 +27,22 @@
 
 header {
   width: 90vw;
-  height: 60px;
+  height: 100px;
   margin: 0 auto;
   background-color: #fff;
   display: flex;
   justify-content: center;
   align-items: center;
+}
+
+#detailed-search-form {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.search-field {
+  margin-left: 20px;
 }
 
 main {
@@ -259,3 +269,67 @@ footer {
   font-size: 40px;
 }
 // ユーザー用ヘッダー //
+
+/* 部屋一覧 */
+
+.sort-link{
+  text-decoration: none;
+  margin-left: 2vw;
+  background-color: #dbf1f2;
+  color: black;
+}
+
+.room-contents {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 10vh 0;
+}
+
+.room-contents>.title {
+  font-size: 5vh;
+  line-height: 1.4;
+  font-weight: bold;
+  color:#FFF
+}
+
+.room-lists {
+  width: 100vw;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.room-lists>.list {
+  width: 37vh;
+  padding: 1vw;
+}
+
+
+.room-img-content {
+  position: relative;
+}
+
+.room-img {
+  width: 33vh;
+  height: 33vh;
+}
+
+.room-info {
+  background-color: skyblue;
+  color: white;
+  padding: 1vw;
+  opacity: 0.9;
+}
+
+.room-layout {
+  font-size: 2.5vh;
+}
+
+.room-rent {
+  font-size: 1.5vh;
+  display: flex;
+  justify-content: space-between;
+}
+
+/* //部屋一覧 */

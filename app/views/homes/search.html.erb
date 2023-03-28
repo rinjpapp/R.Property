@@ -1,0 +1,60 @@
+<div class="main-property-image">
+  <%= link_to "R.Property", root_path, class: "property-logo" %>
+  <div class="page-line"></div>
+  <header>
+  <% if admin_signed_in? %>
+    <ul class="admin-header-lists">
+      <li><%= link_to "物件投稿", new_room_path, class: "admin-header-list" %></li>
+      <li><%= link_to "建物情報", new_building_path, class: "admin-header-list" %></li>
+    </ul>
+  <% end %>
+  <%= search_form_for @q, url: search_homes_path, html: {id: "detailed-search-form"} do |f| %>
+      <div class="search-field">
+        <%= f.label :layout, '部屋の間取りから探す' %><br>
+        <%= f.text_field :layout, placeholder: '例）2LDK' %>
+      </div>
+      <div class="search-field">
+        <%= f.label :rent_gteq, '家賃から探す'%><br>
+        <%= f.number_field :rent_gteq %> 円以上 〜 <%= f.number_field :rent_lteq %> 円以下
+      </div>
+      <div class="search-field">
+        <%= f.label :building_prefecture_id_in, '地域から探す' %><br>
+        <%= f.collection_select(:building_prefecture_id_in, Prefecture.all, :id, :name, {include_blank: "---"}) %>
+      </div>
+    <%= f.submit '検索' %>
+  <% end %>
+  <ul class="sort-links">
+    <li><%= link_to '入居日が遅い順', search_homes_path(latest: "true"), class: 'sort-link' %></li>
+    <li><%= link_to '入居日が早い順', search_homes_path(old: "true"), class: 'sort-link' %></li>
+  </ul>
+  <ul class="sort-links">
+    <li><%= link_to '築年数が浅い順', search_homes_path(newest: "true"), class: 'sort-link' %></li>
+    <li><%= link_to '築年数が古い順', search_homes_path(oldest: "true"), class: 'sort-link' %></li>
+  </ul>
+  <ul class="sort-links">
+    <li><%= link_to '家賃が高い順', search_homes_path(highest: "true"), class: 'sort-link' %></li>
+    <li><%= link_to '家賃が低い順', search_homes_path(lowest: "true"), class: 'sort-link' %></li>
+  </ul>
+  </header>
+  <div class="page-line"></div>
+  <div class='room-contents'>
+    <h2 class='title'>検索結果一覧</h2>
+    <ul class='room-lists' id="detailed-search-result">
+      <% @rooms.each do |r| %>
+        <li class='list'>
+          <div class='room-img-content'>
+            <%= image_tag r.image, class: "room-img" %>
+          </div>
+          <div class='room-info'>
+            <h3 class='room-layout'>
+            <%= r.layout %>
+            </h3>
+            <div class='room-rent'>
+            <span><%= r.rent %>円<br><%= r.building.building_name %></span>
+          </div>
+            <%# <%= link_to '詳細', item_path(item.id) %>
+        </li>
+      <% end %>
+    </ul>
+  </div>
+</div>
