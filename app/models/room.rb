@@ -14,4 +14,11 @@ class Room < ApplicationRecord
     validates :available_date
     validates :image
   end
+
+  scope :latest, -> {order(available_date: :desc)}
+  scope :old, -> {order(available_date: :asc)}
+  scope :newest, -> { includes(:building).order("buildings.build_year DESC") }
+  scope :oldest, -> { includes(:building).order("buildings.build_year ASC") }
+  scope :highest, -> {order(rent: :desc)}
+  scope :lowest, -> {order(rent: :asc)}
 end
