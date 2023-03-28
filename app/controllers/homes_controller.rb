@@ -8,6 +8,21 @@ class HomesController < ApplicationController
   end
 
   def search
+    if params[:latest]
+      @rooms = @q.result.latest
+    elsif params[:old]
+      @rooms = @q.result.old
+    elsif params[:newest]
+      @rooms = @q.result.includes(:building).newest
+    elsif params[:oldest]
+      @rooms = @q.result.includes(:building).oldest
+    elsif params[:highest]
+      @rooms = @q.result.highest
+    elsif params[:lowest]
+      @rooms = @q.result.lowest
+    else
+      @rooms = @q.result
+    end
   end
 
   private
