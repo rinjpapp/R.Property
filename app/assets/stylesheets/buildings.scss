@@ -1,3 +1,20 @@
-// Place all the styles related to the buildings controller here.
-// They will automatically be included in application.css.
-// You can use Sass (SCSS) here: http://sass-lang.com/
+.building-up-page-image {
+  width: 100%;
+  height: 1600px;
+  background-image: image-url('registration-page.png');
+  background-size: cover;
+  background-repeat: no-repeat;
+  opacity: 0.5;
+}
+
+.building-up-page-main {
+  position: absolute;
+  top: 20px;
+  left: 20%;
+  width: 60%;
+  height: fit-content;
+  background-color: rgba(255, 255, 255, 0.906);
+  border-radius: 10px;
+  border: 1px solid rgba(0, 0, 0, 0.259);
+  padding: 2% 3%;
+}

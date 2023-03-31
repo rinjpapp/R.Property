@@ -1,59 +1,102 @@
 <%= render "shared/second-header" %>
+<%= render "shared/admin-header" %>
 
-<div class="rooms-upload-main">
-<h2 class="rooms-upload-title">建物の情報を入力</h2>
-<%= form_with model: @building, url: buildings_path, local: true do |f| %>
-
-    <%# <%= render 'shared/error_messages', model: f.object %>
-
-    <%# 物件画像 %>
-  <div class="img-upload">
-    <div class="weight-bold-text">
-      物件画像
+<div class="sin-up-page">
+  <div class="building-up-page-image"></div>
+  <div class="building-up-page-main">
+    <%= form_with model: @building, url: buildings_path, local: true do |f| %>
+        <%= render 'shared/error_messages', model: f.object %>
+    <div class="user-registration-header">
+      <h1 class="user-registration-header-logo">新規建物登録</h1>
     </div>
-    <div class="click-upload">
-      <p>
-        クリックしてファイルをアップロード
-      </p>
-      <%= f.file_field :image, id:"item-image" %>
+    <div class="user-registration-form">
+      <h3 class="user-registration-form-title">建物の写真をアップロード</h3>
     </div>
-  </div>
-    <%# /物件画像 %>
-    <%# 物件説明 %>
-  <div class="new-building">  
-    <div class="weight-bold-text">
-        建物名
-      <span class="indispensable">必須</span>
+    <table class="user-registration-input">
+      <tbody>
+        <tr>
+          <th>物件画像</th>
+          <td class="form-text-box">
+            <%= f.file_field :image, id:"item-image" %>
+            <p class="form-note">
+              クリックして写真をアップロード
+            </p>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+    <div class="user-registration-form">
+      <h3 class="user-registration-form-title">マンション名を記載</h3>
     </div>
-    <%= f.text_field :building_name, class:"buildings-text", id:"building_name", placeholder:"六本木ヒルズ" %>
-    <div class="weight-bold-text">
-        郵便番号
-      <span class="indispensable">必須</span>
+    <table class="user-registration-input">
+      <tbody>
+        <tr>
+          <th>建物名</th>
+          <td class="form-text-box">
+            <%= f.text_field :building_name, class:"buildings-text", id:"building_name", placeholder:"六本木ヒルズ" %>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+    <div class="user-registration-form">
+      <h3 class="user-registration-form-title">建物の住所を記載</h3>
     </div>
-    <%= f.text_field :post_code, class:"buildings-text", id:"post_code", placeholder:"123-4567" %>
-    <div class="weight-bold-text">
-        都道府県
-      <span class="indispensable">必須</span>
+    <table class="user-registration-input">
+      <tbody>
+        <tr>
+          <th>郵便番号</th>
+          <td class="form-text-box">
+            <%= f.text_field :post_code, class:"buildings-text", id:"post_code", placeholder:"123-4567" %>
+            <span class="small-text">（半角数字）</span>
+            <p class="form-note">
+              ※ハイフンを入れてください
+            </p>
+          </td>
+        </tr>
+        <tr>
+          <th>都道府県</th>
+          <td class="form-select-box">
+            <%= f.collection_select(:prefecture_id, Prefecture.all, :id, :name, {}, {class:"select-box", id:"prefecture_id"}) %>
+          </td>
+        </tr>
+        <tr>
+          <th>市区町村</th>
+          <td class="form-text-box">
+            <%= f.text_field :city, class:"buildings-text", id:"city" %>
+            <p class="form-note">
+              例：渋谷区
+            </p>
+          </td>
+        </tr>
+        <tr>
+          <th>その他住所・番地</th>
+          <td class="form-text-box">
+            <%= f.text_field :address, class:"buildings-text", id:"address" %>
+            <p class="form-note">
+              例：広尾 1-1-1
+            </p>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+    <div class="user-registration-form">
+      <h3 class="user-registration-form-title">建物の詳細情報を記載</h3>
     </div>
-    <%= f.collection_select(:prefecture_id, Prefecture.all, :id, :name, {}, {class:"select-box", id:"prefecture_id"}) %>
-    <div class="weight-bold-text">
-        市区町村
-      <span class="indispensable">必須</span>
-    </div>
-    <%= f.text_field :city, class:"buildings-text", id:"city", placeholder:"港区" %>
-    <div class="weight-bold-text">
-        番地
-      <span class="indispensable">必須</span>
-    </div>
-    <%= f.text_field :address, class:"buildings-text", id:"address", placeholder:"１−１" %>
-    <div class="weight-bold-text">
-        アクセス
-      <span class="indispensable">必須</span>
-    </div>
-    <%= f.text_field :access, class:"buildings-text", id:"access", placeholder:"〇〇駅から徒歩約〇分" %>
-    <div class="weight-bold-text">
-      <%= f.label :"築年月" %><span class="indispensable">必須</span><br />
-        <%= raw sprintf(
+    <table class="user-registration-input">
+      <tbody>
+        <tr>
+          <th>アクセス</th>
+          <td class="form-text-box">
+            <%= f.text_field :access, class:"buildings-text", id:"access" %>
+            <p class="form-note">
+              例：東京メトロ日比谷線「広尾駅」から徒歩13分
+            </p>
+          </td>
+        </tr>
+        <tr>
+          <th>築年月</th>
+          <td class="form-text-box">
+            <%= raw sprintf(
                   f.date_select(
                     :build_year,
                     discard_day: true,
@@ -62,21 +105,25 @@
                     start_year: 1990,
                     end_year: (Time.now.year + 2),
                     date_separator: '%s'),
-                  "<p> 年 </p>") + "<p> 月 </p>" %>
-      </div>
-    <div class="weight-bold-text">
-        総階数
-      <span class="indispensable">必須</span>
-    </div>
-    <%= f.text_field :story, class:"buildings-text", id:"story", placeholder:"10" %>
-    <%# /物件説明 %>
-    <%# 下部ボタン %>
-    <div class="sell-btn-contents">
+                  "年 ") + "月" %>
+          </td>
+        </tr>
+        <tr>
+          <th>総階数</th>
+          <td class="form-text-box">
+            <%= f.text_field :story, class:"buildings-text", id:"story" %>
+            <span class="small-text">（半角数字）</span>
+            <p class="form-note">
+              例：5階建の物件 → 5と記載
+            </p>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+    <div class="actions">
       <%= f.submit "アップロードする" ,class:"upload-btn" %>
-      <%=link_to 'もどる', root_path, class:"back-btn" %>
     </div>
-    <%# /下部ボタン %>
+    <% end %>
+  </div>
 </div>
-<% end %>
-
 <%= render "shared/footer" %>

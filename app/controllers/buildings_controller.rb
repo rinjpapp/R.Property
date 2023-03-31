@@ -7,7 +7,7 @@ class BuildingsController < ApplicationController
 
   def create
     @building = Building.new(building_params)
-    if @building.save!
+    if @building.save
       flash[:success] = "商品を登録しました"
       redirect_to root_path
     else
