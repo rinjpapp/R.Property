@@ -2,127 +2,193 @@
   box-sizing: border-box;
 }
 
-// ページ全体のバックイメージ
-.main-property-image {
+.horizon-line-space {
   width: 100vw;
-  max-height: fit-content;
-  background-image: image-url('header.png');
-  background-size: cover;
-  background-repeat: no-repeat;
-  background-position: top center;
-  display: flex;
-  flex-direction: column;
-}
-
-.property-logo {
-  font-size: 10vh;
-  font-weight: 800;
-  color: #d9ffe8;
-  text-align: center;
-  font-family: 'Zapfino', sans-serif;
-  margin: 30px auto;
-  }
-
-// ページ全体のバックイメージ //
-
-header {
-  width: 90vw;
-  height: 100px;
-  margin: 0 auto;
-  background-color: #fff;
+  height: 30px;
   display: flex;
   justify-content: center;
   align-items: center;
 }
 
-#detailed-search-form {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-.search-field {
-  margin-left: 20px;
+.horizon-line {
+  width: 100%;
+  height: 2px;
+  background-color: #23dbaa;
 }
 
 main {
-  width: 100%;
+  width: 100vw;
   height: fit-content;
 }
 
-.page-line {
+// ユーザー登録とログインボタン //
+.user-access-panel {
+  width: 100vw;
+  height: 400px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: hsla(197, 89%, 83%, 0.125);
+}
+
+.user-access-side {
+  width: 35%;
+  height: 400px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.user-access-side-image-left {
   width: 90%;
-  height: 2px;
-  background-color: #fff;
-  margin: 50px auto;
+  height: 350px;
+  background-image: image-url('homes-page1.png');
+  background-size: cover;
+  background-repeat: no-repeat;
+  border-radius: 40%;
+  overflow: hidden;
 }
 
-.space {
-  height: 500px;
+.user-access-side-image-right {
+  width: 90%;
+  height: 350px;
+  background-image: image-url('homes-page2.png');
+  background-size: cover;
+  background-repeat: no-repeat;
+  border-radius: 40%;
+  overflow: hidden;
 }
 
-// ユーザー登録とログインボタン
+.user-access-middle {
+  width: 20%;
+  height: 400px;
+}
+
 .user-access-text {
-  width: 25%;
-  height: 60px;
-  margin: 30px auto 10px;
+  width: 100%;
+  height: 30px;
   text-align: center;
-}
-
-.are-you-member {
-  font-size: 180%;
+  font-size: 1.5rem;
   font-weight: bold;
-  color: #fff;
-}
-
-.user-access {
-  width: fit-content;
-  height: 50px;
-  margin: auto;
-  background-color: #3ccace;
-  opacity: 0.8;
-  text-align: center;
-  border-radius: 10px;
-  padding: auto;
-}
-
-.user-access-link {
-  text-decoration: none;
-  font-size: 40px;
-  font-family: 'Times New Roman', Times, serif;
-  font-weight: bold;
-  color: whitesmoke;
-  margin: auto;
+  margin-top: 2.5rem;
+  margin-bottom: 2rem;
 }
 
 .user-input {
-  margin: 0 auto;
-  width: fit-content;
-  height: 80px;
+  margin-top: 1rem;
+
+.label-btns {
+  display: flex;
   justify-content: center;
-  align-content: center;
+  align-items: center;
+  height: 55px;
+}
+
+  input[type="checkbox"] {
+    display: none;
+  }
+
+  .label-btn {
+    background-color: #E0E0E0;
+    padding: 0.75rem 1.5rem;
+    margin-right: 1rem;
+    margin-bottom: 1rem;
+    border-radius: 0.5rem;
+    cursor: pointer;
+    -webkit-box-shadow: 1px 2px 0px 1px #bcb7b7;
+
+    &:hover {
+      background-color: #C2C2C2;
+      -webkit-box-shadow: 1px 2px 0px 1px #bcb7b7;
+    }
+  }
+
+  input[type="checkbox"]:checked + .label-btn {
+    background-color: #1b8d5f;
+    color: white;
+    -webkit-box-shadow: 1px 2px 0px 1px #bcb7b7;
+
+
+    &:hover {
+      background-color: #1b8d5f7f;
+      -webkit-box-shadow: 1px 2px 0px 1px #bcb7b7;
+    }
+  }
 }
 
 .user-input-link {
-  background-color: #3ccace;
-  margin: 0 auto;
-  border-radius: 10px;
-  width: fit-content;
+
+  td {
+    text-align: center;
+
+    a {
+      background-color: #3498DB;
+      color: white;
+      padding: 0.75rem 1.5rem;
+      border-radius: 0.5rem;
+      text-decoration: none;
+      -webkit-box-shadow: 1px 2px 0px 1px #bcb7b7;
+
+
+      &:hover {
+        background-color: #2980B9;
+        -webkit-box-shadow: 1px 2px 0px 1px #929090;
+      }
+    }
+  }
 }
 
-.label-btn {
-  color: #fff;
-  font-size: 20px;
-  margin-right: 20px;
-}
-// ユーザー登録とログインボタン //
 
-// 会社連絡先情報コラム
+.user-access {
+  margin-top: 2rem;
+  margin-bottom: 1rem;
+  display: flex;
+  justify-content: center;
+
+  a {
+    background-color: #3498DB;
+    color: white;
+    padding: 0.75rem 1.5rem;
+    border-radius: 0.5rem;
+    text-decoration: none;
+    -webkit-box-shadow: 1px 2px 0px 1px #bcb7b7;
+
+
+    &:hover {
+      background-color: #2980B9;
+      -webkit-box-shadow: 1px 2px 0px 1px #929090;
+
+    }
+  }
+}
+//* ユーザー登録とログインボタン *//
+
+// 会社連絡先情報コラム //
+.contact-information-side {
+  position: relative;
+  width: 100vw;
+  height: 400px;
+}
+
+.contact-information-background {
+  width: 100vw;
+  height: 400px;
+  background-image: image-url('company-information.png');
+  background-size: cover;
+  background-repeat: no-repeat;
+  opacity: 0.7;
+}
+
 .contact-information {
-  margin: 30px auto 10px;
-  width: 70%;
+  position: absolute;
+  top: 20px;
+  left: 70px;
+  opacity: 1;
+  width: fit-content;
   height: fit-content;
   padding: 20px;
+  background-color: rgba($color: #faf9f9, $alpha: 0.3);
+  border-radius: 10px;
 }
 
 .contact-information-list {
@@ -132,55 +198,20 @@ main {
 .contact-logo {
   font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
   font-weight: bold;
-  color: rgb(222, 241, 232);
+  color: rgb(5, 127, 70);
   font-size: 25px;
   text-decoration: none;
 }
 
 .company-logo-in-contact {
   width: 11vw;
-  opacity: 0.8;
 }
 
 .contact-information-link {
   text-decoration: none;
-  color: rgb(222, 241, 232);
+  color: rgb(0, 136, 73);
   font-weight: bold;
   line-height: 30px;
-}
-// 会社連絡先情報コラム //
-
-// フッター
-footer {
-  width: 90vw;
-  height: 100px;
-  margin: 0 auto 20px;
-  background-color: black;
-  opacity: 0.7;
-}
-
-.footer-link-lists {
-  display: flex;
-  justify-content: space-evenly;
-  margin: 20px auto;
-}
-
-.footer-link {
-  color: rgb(222, 241, 232);
-  text-decoration: none;
-}
-
-.link-space {
-  color: rgb(222, 241, 232);
-}
-
-.©-logo-list {
-  text-align: center;
-}
-
-.©-logo {
-  color: rgb(222, 241, 232);
-  text-decoration: none;
 }
 
 .link {
@@ -215,8 +246,9 @@ footer {
 .dropDown__link {
   transition: color .15s;
 }
+//* 会社連絡先情報コラム *//
 
-// フッター //
+
 
 // 住人用トップページ
 .resident-main-page {
@@ -270,66 +302,210 @@ footer {
 }
 // ユーザー用ヘッダー //
 
-/* 部屋一覧 */
 
-.sort-link{
-  text-decoration: none;
-  margin-left: 2vw;
-  background-color: #dbf1f2;
-  color: black;
+
+// 物件検索ページ //
+.search-page {
+  padding-top: 10px;
+  width: 100%;
+  height: fit-content;
+  display: flex;
+  background-color: #333;
+}
+// ソート機能含むレフトカラム //
+.search-page-left {
+  width: 12%;
+  margin-left: 1%;
+  margin-bottom: 10px;
+  background-color: #1783a445;
 }
 
-.room-contents {
-  display: flex;
+.sort-links-title {
+  width: 90%;
+  margin-left: 5%;
+  height: 67px;
+  padding-top: 37px;
+  border-bottom: 2px solid #f4f6f7;
+  margin-bottom: 2px;
+  h2 {
+    font-size: 16px;
+    font-weight: bold;
+    color: #f8f6f6;
+  }
+}
+
+.sort-links-container {
+  display: flex;  // Flexboxを使用して各要素を縦に並べる
   flex-direction: column;
-  align-items: center;
-  padding: 10vh 0;
+  gap: 10px;  // 要素間のスペースを設定
+
+  .sort-link {
+    display: inline-block;  // リンクをブロック要素として表示
+    padding: 10px 20px;
+    margin: 5px;
+    border: 2px solid #418893;
+    border-radius: 5px;
+    color: #333;
+    font-weight: bold;
+    text-decoration: none;
+    transition: all 0.2s ease-in-out;
+    background-color: whitesmoke;
+
+    &:hover {
+      background-color: #333;
+      color: #fff;
+    }
+
+    &.active {
+      border-color: #333;
+      background-color: #333;
+      color: #fff;
+    }
+  }
+}
+//* ソート機能含むレフトカラム *//
+
+// 検索結果一覧 //
+$search-page-color: #067d86;
+$search-page-font: "Roboto", sans-serif;
+
+.search-page-right {
+  width: 85%;
+  margin: 0 1% 10px 1px;
+  height: fit-content;
+  background-color: #1783a469;
 }
 
-.room-contents>.title {
-  font-size: 5vh;
-  line-height: 1.4;
+.search-page-rooms-title-box {
+  margin-top: 20px;
+  width: 100%;
+  padding-bottom: 22px;
+  text-align: center;
+  border-bottom: 2px solid #f3f3f3;
+  margin-bottom: 20px;
+}
+
+.search-page-rooms-title {
+  font-size: 30px;
   font-weight: bold;
-  color:#FFF
+  color: whitesmoke;
 }
 
-.room-lists {
-  width: 100vw;
+.search-page-rooms-row {
+  width: 94%;
+  margin: 0 3%;
   display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-}
-
-.room-lists>.list {
-  width: 37vh;
-  padding: 1vw;
-}
-
-
-.room-img-content {
-  position: relative;
-}
-
-.room-img {
-  width: 33vh;
-  height: 33vh;
-}
-
-.room-info {
-  background-color: skyblue;
-  color: white;
-  padding: 1vw;
-  opacity: 0.9;
-}
-
-.room-layout {
-  font-size: 2.5vh;
-}
-
-.room-rent {
-  font-size: 1.5vh;
-  display: flex;
+  align-items: flex-start;
   justify-content: space-between;
-}
+  border-bottom: 1px solid #f3f3f3;
+  padding-bottom: 20px;
+  margin-bottom: 20px;
 
-/* //部屋一覧 */
+  .search-page-rooms-left {
+    display: flex;
+    flex-direction: column;
+    margin-right: 20px;
+    align-items: center;
+  
+    .building-image {
+      width: 300px;
+      height: 300px;
+      border: 2px solid white;
+      box-shadow: 0 0 20px rgba(0, 0, 0, 0.3);
+      border-radius: 5px;
+      background-size: cover;
+      background-position: center;
+  
+      &:before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background-color: rgba(0, 0, 0, 0.4);
+        border-radius: 5px;
+        opacity: 0;
+        transition: all 0.3s ease-in-out;
+      }
+  
+      &:hover:before {
+        opacity: 1;
+      }
+    }
+  
+    h3 {
+      font-size: 1.5rem;
+      margin-top: 10px;
+      font-family: $search-page-font;
+      color: #fff;
+      text-shadow: 0 0 5px rgba(0, 0, 0, 0.5);
+      text-align: center;
+    }
+  
+
+    p {
+      font-size: 1.2rem;
+      font-family: $search-page-font;
+      text-align: center;
+      margin: 0;
+    }
+  }
+
+  .search-page-rooms-right {
+    width: calc(66.66% - 10px);
+  }
+
+  .search-page-rooms-table {
+    margin-top: 20px;
+    border-collapse: collapse;
+    width: 100%;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    border-radius: 10px;
+    background: white;
+
+    thead {
+      background: $search-page-color;
+      color: white;
+
+      th {
+        font-size: 1.2rem;
+        padding: 1rem;
+        text-align: left;
+        font-family: $search-page-font;
+      }
+    }
+
+    tbody {
+      tr {
+        &:nth-child(even) {
+          background: #f3f3f3;
+        }
+      }
+
+      tr:hover {
+        background-color: #79767664;
+      }
+
+      td {
+        padding: 1rem;
+        text-align: left;
+        font-size: 1.1rem;
+        font-family: $search-page-font;
+
+        a {
+          color: black;
+          text-decoration: none;
+          transition: all 0.3s ease-in-out;
+
+          &:hover {
+            color: darken($search-page-color, 30%);
+          }
+        }
+      }
+    }
+  }
+}
+//* 検索結果一覧 *//
+//* 物件検索ページ *//

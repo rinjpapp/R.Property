@@ -1,0 +1,33 @@
+<%# CSS・・・assets/stylesheets/shared/header.css %>
+<header>
+  <%# /会社ロゴ入りページのトップ帯/ %>
+  <div class="header-up-side">
+    <div class="header-up-side-image"></div>
+    <div class="header-top-page-link">
+      <%= link_to "R.Property", root_path, class: "property-logo" %>
+    </div>
+  </div>
+  <%# ///会社ロゴ入りページのトップ帯/// %>
+
+  <%# /物件情報ページへの検索付きリンク/ %>
+  <div class="header-down-side">
+    <%= search_form_for @q, url: search_homes_path, html: {id: "detailed-search-form"} do |f| %>
+      <ul class="room-search-fields">
+        <li class="room-search-field search-field-layout">
+          <%= f.label :layout, '部屋の間取りから探す', class: "search-label-layout" %>
+          <%= f.text_field :layout, placeholder: '例）2LDK', class: "input-layout" %>
+        </li>
+        <li class="room-search-field search-field-prefecture">
+          <%= f.label :building_prefecture_id_in, '地域から探す', class: "search-label-prefecture" %>
+          <%= f.collection_select(:building_prefecture_id_in, Prefecture.all, :id, :name, {include_blank: "　"}, class: "input-prefecture") %>
+        </li>
+        <li class="room-search-field search-field-rent">
+          <%= f.label :rent_gteq, '家賃から探す', class: "search-label-rent" %>
+          <%= f.number_field :rent_gteq, class: "input-rent-gteq", placeholder: '100000' %> 円 〜 <%= f.number_field :rent_lteq, class: "input-rent-lteq", placeholder: '150000' %> 円
+        </li>
+          <%= f.submit 'お 気 に 入 り の 部 屋 を 探 す', class: "header-search-btn" %>
+      </ul>
+    <% end %>
+  </div>
+  <%# ///物件情報ページへの検索付きリンク/// %>
+</header>

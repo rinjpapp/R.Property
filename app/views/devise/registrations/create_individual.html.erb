@@ -1,7 +1,88 @@
-<h2>登録が完了しました</h2>
-<% if current_user.status_id == 2 %>
-<%= link_to "住人用マイページにいく", residents_path %>
-<% elsif current_user.status_id == 3 %>
-<%= link_to "申込者用マイページにいく", applicants_path %>
-<% end %>
-
+<div class="sin-up-page">
+  <div class="sin-up-page-image"></div>
+  <div class="header-top-page-link">
+    <%= link_to "R.Property", root_path, class: "property-logo" %>
+  </div>
+  <div class="sin-up-page-main">
+    <div class="user-registration-header">
+      <h1 class="user-registration-header-logo">登録内容の確認</h1>
+    </div>
+    <div class="user-registration-form">
+      <h3 class="user-registration-form-title">会員情報</h3>
+    </div>
+    <table class="user-registration-input">
+      <tbody>
+        <tr>
+          <th>ステータス</th>
+          <td class="form-text-box">
+            <%= @user.status.name %>
+          </td>
+        </tr>
+        <tr>
+          <th>アカウント名</th>
+          <td class="form-text-box">
+            <%= @user.nickname %>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+    <div class="user-registration-form">
+      <h3 class="user-registration-form-title">ユーザー情報</h3>
+    </div>
+    <table class="user-registration-input">
+      <tbody>
+        <tr>
+          <th>メールアドレス</th>
+          <td class="form-text-box">
+            <%= @user.email %>
+          </td>
+        </tr>
+        <tr>
+          <th>パスワード</th>
+          <td class="form-text-box">
+            <%= @user.password %>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+    <div class="user-registration-form">
+      <h3 class="user-registration-form-title">お客様情報</h3>
+    </div>
+    <table class="user-registration-input">
+      <tbody>
+        <tr>
+          <th>お名前（全角）</th>
+          <td class="form-text-box">
+            <%= @user.individual.last_name %>　<%= @user.individual.first_name %>
+          </td>
+        </tr>
+        <tr>
+          <th>お名前（カナ）</th>
+          <td class="form-text-box">
+            <%= @user.individual.last_name_kana %>　<%= @user.individual.first_name_kana %>
+          </td>
+        </tr>
+        <tr>
+          <th>生年月日</th>
+          <td class="form-text-box">
+            <%= @user.individual.birth_day.strftime("%Y年%-m月%-d日") %>
+          </td>
+        </tr>
+        <tr>
+          <th>電話番号</th>
+          <td class="form-text-box">
+            <%= @user.individual.phone.name %>：<%= @user.individual.phone_number %>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+    <div class="my-page-link">
+      <% if current_user.status_id == 2 %>
+        <%= link_to "完了してマイページに行く", residents_path, class: "button residents-button" %>
+      <% elsif current_user.status_id == 3 %>
+        <%= link_to "完了してマイページに行く", applicants_path, class: "button applicants-button" %>
+      <% end %>
+    </div>
+  </div>
+<div>
+<%= render "shared/footer" %>

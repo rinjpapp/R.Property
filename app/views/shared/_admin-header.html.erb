@@ -1,0 +1,14 @@
+  <%# /管理者用のヘッダーリンクリスト/ %>
+  <% if admin_signed_in? %>
+    <div class="admin-header">
+      <ul class="admin-header-links">
+        <li class="admin-header-link"><%= link_to "＃＃＃＃＃＃＃＃", "#", class: "admin-header-logo" %></li>
+        <li class="admin-header-link"><%= link_to "新規部屋情報登録", new_room_path, class: "admin-header-logo" %></li>
+        <li class="admin-header-link"><%= link_to "新規建物情報登録", new_building_path, class: "admin-header-logo" %></li>
+        <li class="admin-header-link"><%= link_to "＃＃＃＃＃＃＃＃", "#", class: "admin-header-logo" %></li>
+        <li class="admin-header-link"><%= link_to "＃＃＃＃＃＃＃＃", "#", class: "admin-header-logo" %></li>
+        <li class="admin-header-link"><%= link_to "＃＃＃＃＃＃＃＃", "#", class: "admin-header-logo" %></li>
+      </ul>
+    </div>
+  <% end %>
+  <%# ///管理者用のヘッダーリンクリスト/// %>

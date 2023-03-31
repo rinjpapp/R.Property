@@ -1,25 +1,48 @@
-<h2>Log in</h2>
-
-<%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
-  <div class="field">
-    <%= f.label :email %><br />
-    <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
+<div class="sign-up-page">
+  <div class="log-in-page-image"></div>
+  <div class="header-top-page-link">
+    <%= link_to "R.Property", root_path, class: "property-logo" %>
   </div>
-
-  <div class="field">
-    <%= f.label :password %><br />
-    <%= f.password_field :password, autocomplete: "current-password" %>
-  </div>
-
-  <% if devise_mapping.rememberable? %>
-    <div class="field">
-      <%= f.check_box :remember_me %>
-      <%= f.label :remember_me %>
+  <div class="log-in-page-main">
+    <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+    <%= render "devise/shared/error_messages", resource: resource %>
+    <div class="user-log-in-header">
+      <h1 class="user-registration-header-logo">ログイン</h1>
+    </div>
+    <div class="user-registration-form">
+      <h3 class="user-registration-form-title">管理者情報</h3>
+    </div>
+    <table class="user-log-in-input">
+      <tbody>
+        <tr>
+          <th>メールアドレス</th>
+          <td class="form-text-box">
+            <%= f.email_field :email, autofocus: true, autocomplete: "email", style: "width: 15rem" %>
+            <p class="form-note">（半角英数）</p>
+          </td>
+        </tr>
+        <tr>
+          <th>パスワード</th>
+          <td class="form-text-box">
+            <%= f.password_field :password, autocomplete: "current-password", style: "width: 15rem" %>
+            <p class="form-note">（半角英数6文字以上20文字以内）</p>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+      <% if devise_mapping.rememberable? %>
+        <div class="remember-me-btn">
+          <%= f.check_box :remember_me %>
+          <%= f.label :remember_me %>
+        </div>
+      <% end %>
+    <div class="actions">
+      <%= f.submit "Log in" %>
     </div>
   <% end %>
-
-  <div class="actions">
-    <%= f.submit "Log in" %>
+    <div class="if-user-link">
+      <%= link_to "Forgot your password?", new_password_path(resource_name) %>
+    </div>
   </div>
-<% end %>
-<%= link_to "Forgot your password?", new_password_path(resource_name) %>
+<div>
+<%= render "shared/footer" %>

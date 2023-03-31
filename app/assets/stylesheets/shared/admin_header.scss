@@ -1,0 +1,38 @@
+// 管理者用のヘッダーリンクリスト //
+.admin-header {
+  width: 100vw;
+  height: 70px;
+  display: flex;
+  justify-content: center;
+}
+
+.admin-header-links {
+  width: 100%;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  list-style: none;
+  background-color: rgba($color: #1b603dee, $alpha: 0.8);
+}
+
+.admin-header-link {
+  background-color: white;
+  padding: 10px;
+  border: 1px solid #1aa9f0;
+  border-radius: 10px;
+  -webkit-box-shadow: 1px 2px 0px 1px #bcb7b7;
+}
+
+.admin-header-link a {
+  color: #1783a4;
+  font-size: 20px;
+  font-weight: bold;
+  text-transform: uppercase;
+  text-decoration: none;
+  transition: all 0.3s ease;
+}
+
+.admin-header-link a:hover {
+  opacity: 0.5;
+}
+//* 管理者用のヘッダーリンクリスト *//

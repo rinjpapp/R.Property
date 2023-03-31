@@ -1,40 +1,82 @@
-<h2>Sign up</h2>
-
-<%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
-  <%= render "devise/shared/error_messages", resource: resource %>
-
-<%# 追加したカラム %>
-  <div class="field">
-    <%= f.label :"どちらかお選びください" %><br />
-    <%= f.collection_select :status_id, Status.all, :id, :name, {}, {class:"collection_select", id:"status"} %>
+<div class="sin-up-page">
+  <div class="sin-up-page-image"></div>
+  <div class="header-top-page-link">
+    <%= link_to "R.Property", root_path, class: "property-logo" %>
   </div>
-
-  <div class="field">
-    <%= f.label :"アカウント名" %><br />
-    <%= f.text_field :nickname %>
+  <div class="sin-up-page-main">
+  <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+    <%= render "devise/shared/error_messages", resource: resource %>
+    <div class="user-registration-header">
+      <h1 class="user-registration-header-logo">新規会員登録</h1>
+    </div>
+    <p class="registration-note">
+      当サイトを利用していただくために、下記の手順でお客様の情報をご入力いただきます。(登録無料)
+      <br>
+      一度ご登録いただければ、2回目以降はメールアドレスとパスワードの入力だけでご利用いただけます。
+    </p>
+    <div class="user-registration-form">
+      <h3 class="user-registration-form-title">会員情報</h3>
+    </div>
+    <table class="user-registration-input">
+      <tbody>
+        <tr>
+          <th>ステータス</th>
+          <td class="form-select-box">
+            <%= f.collection_select :status_id, Status.all, :id, :name, {}, {class:"collection_select", id:"status", style: "height: 2rem"} %>
+            <p class="form-note">
+              ※必ずどちらかお選びください
+            </p>
+          </td>
+        </tr>
+        <tr>
+          <th>アカウント名</th>
+          <td class="form-text-box">
+            <%= f.text_field :nickname %>
+            <p class="form-note">
+              ※分かりやすいものを推奨します
+            </p>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+    <div class="user-registration-form">
+      <h3 class="user-registration-form-title">ユーザー情報</h3>
+    </div>
+    <table class="user-registration-input">
+      <tbody>
+        <tr>
+          <th>メールアドレス</th>
+          <td class="form-text-box">
+            <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
+            <span class="small-text">（半角英数）</span>
+            <p class="form-note">
+              例：re@property.co.jp
+              <br>
+              ※ご登録いただけないアドレスがあります。詳しくは、<%= link_to "こちら", "#", class: 'form-note-link' %>
+            </p>
+          </td>
+        </tr>
+        <tr>
+          <th>パスワード</th>
+          <td class="form-text-box">
+            <%= f.password_field :password, autocomplete: "new-password" %>
+            <span class="small-text">（半角英数6文字以上20文字以内）</span>
+            <p class="form-note">例：Tintai2023</p>
+          </td>
+        </tr>
+        <tr>
+          <th>パスワード（確認）</th>
+          <td class="form-text-box">
+            <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
+            <p class="form-note">※確認のためもう一度ご入力ください</p>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+    <div class="actions">
+      <%= f.submit "次へ" %>
+    </div>
+  <% end %>
   </div>
-<%# //追加したカラム// %>
-  <div class="field">
-    <%= f.label :email %><br />
-    <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
-  </div>
-
-  <div class="field">
-    <%= f.label :password %>
-    <% if @minimum_password_length %>
-    <em>(<%= @minimum_password_length %> characters minimum)</em>
-    <% end %><br />
-    <%= f.password_field :password, autocomplete: "new-password" %>
-  </div>
-
-  <div class="field">
-    <%= f.label :password_confirmation %><br />
-    <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
-  </div>
-
-  <div class="actions">
-    <%= f.submit "Next" %>
-  </div>
-<% end %>
-
-<%= render "devise/shared/links" %>
+<div>
+<%= render "shared/footer" %>

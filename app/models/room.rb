@@ -15,8 +15,8 @@ class Room < ApplicationRecord
     validates :image
   end
 
-  scope :latest, -> {order(available_date: :desc)}
-  scope :old, -> {order(available_date: :asc)}
+  scope :largest, -> {order(floor_area: :desc)}
+  scope :smallest, -> {order(floor_area: :asc)}
   scope :newest, -> { includes(:building).order("buildings.build_year DESC") }
   scope :oldest, -> { includes(:building).order("buildings.build_year ASC") }
   scope :highest, -> {order(rent: :desc)}

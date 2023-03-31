@@ -8,10 +8,10 @@ class HomesController < ApplicationController
   end
 
   def search
-    if params[:latest]
-      @rooms = @q.result.latest
-    elsif params[:old]
-      @rooms = @q.result.old
+    if params[:largest]
+      @rooms = @q.result.largest
+    elsif params[:smallest]
+      @rooms = @q.result.smallest
     elsif params[:newest]
       @rooms = @q.result.includes(:building).newest
     elsif params[:oldest]

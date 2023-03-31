@@ -1,0 +1,97 @@
+// 会社ロゴ入りページのトップ帯 //
+.header-up-side {
+  position: relative;
+}
+
+.header-up-side-image {
+  width: 100%;
+  height: 430px;
+  background-image: image-url('header.png');
+  background-size: cover;
+  background-repeat: no-repeat;
+  opacity: 0.7;
+}
+
+.header-top-page-link {
+  width: 100%;
+  position: absolute;
+  top: 0px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.property-logo {
+  font-size: 500%;
+  font-weight: 900;
+  color: #154729;
+  font-family: 'Zapfino', sans-serif;
+}
+//* 会社ロゴ入りページのトップ帯 *//
+
+// 物件情報ページへの検索付きリンク //
+.header-down-side {
+  width: 70%;
+  height: 200px;
+  position: absolute;
+  top: 245px;
+  left: 15%;
+
+  .room-search-fields {
+    background-color: rgba($color: #000000, $alpha: 0.5);
+    border-radius: 10px;
+    list-style: none;
+    padding: 10px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    color: whitesmoke;
+    font-size: 100%;
+    font-weight: bold;
+  }
+
+  .search-label-layout,
+  .search-label-rent,
+  .search-label-prefecture {
+    display: block;
+    margin-bottom: 7px;
+    font-size: 100%;
+    font-weight: bold;
+    color: whitesmoke;
+  }
+
+  .input-layout,
+  .input-rent-gteq,
+  .input-rent-lteq,
+  .input-prefecture {
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 100%;
+    color: #555;
+    width: 100%;
+  }
+
+  .input-rent-gteq,
+  .input-rent-lteq {
+    width: 42%;
+  }
+
+  .header-search-btn {
+    margin-top: 10px;
+    height: 50px;
+    width: 100%;
+    background-color: #0c7390;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    font-size: 150%;
+
+    &:hover {
+      background-color: #2493b5;
+    }
+  }
+}
+//* 物件情報ページへの検索付きリンク *//
