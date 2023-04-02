@@ -121,8 +121,8 @@ main {
   td {
     text-align: center;
 
-    a {
-      background-color: #3498DB;
+    .user-access-link1{
+      background-color: #3447db;
       color: white;
       padding: 0.75rem 1.5rem;
       border-radius: 0.5rem;
@@ -131,7 +131,21 @@ main {
 
 
       &:hover {
-        background-color: #2980B9;
+        background-color: #292eb9;
+        -webkit-box-shadow: 1px 2px 0px 1px #929090;
+      }
+    }
+        .user-access-link2{
+      background-color: #31a617;
+      color: white;
+      padding: 0.75rem 1.5rem;
+      border-radius: 0.5rem;
+      text-decoration: none;
+      -webkit-box-shadow: 1px 2px 0px 1px #bcb7b7;
+
+
+      &:hover {
+        background-color: #2e8f18;
         -webkit-box-shadow: 1px 2px 0px 1px #929090;
       }
     }
