@@ -1,21 +1,7 @@
 <%= render "shared/header" %>
 
 <main>
-  <%# /管理者用のヘッダーリンクリスト/ %>
-  <% if admin_signed_in? %>
-    <div class="admin-header">
-      <ul class="admin-header-links">
-        <li class="admin-header-link"><%= link_to "＃＃＃＃＃＃＃＃", "#", class: "admin-header-logo" %></li>
-        <li class="admin-header-link"><%= link_to "新規部屋情報登録", new_room_path, class: "admin-header-logo" %></li>
-        <li class="admin-header-link"><%= link_to "新規建物情報登録", new_building_path, class: "admin-header-logo" %></li>
-        <li class="admin-header-link"><%= link_to "＃＃＃＃＃＃＃＃", "#", class: "admin-header-logo" %></li>
-        <li class="admin-header-link"><%= link_to "＃＃＃＃＃＃＃＃", "#", class: "admin-header-logo" %></li>
-        <li class="admin-header-link"><%= link_to "＃＃＃＃＃＃＃＃", "#", class: "admin-header-logo" %></li>
-      </ul>
-    </div>
-  <% end %>
-  <%# ///管理者用のヘッダーリンクリスト/// %>
-
+<%= render "shared/admin-header"%>
   <div class="search-page">
     <div class="search-page-left">
       <div class="sort-links-title">
@@ -43,7 +29,7 @@
               <% if building.image.attached? %>
                 <%= image_tag building.image, class: "building-image" %>
               <% end %>
-              <h3><%= building_name %></h3>
+              <h3><%= link_to building_name, home_path(building.id) %></h3>
             </div>
             <div class="search-page-rooms-right">
               <table class="search-page-rooms-table">

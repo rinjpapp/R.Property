@@ -452,7 +452,7 @@ $search-page-font: "Roboto", sans-serif;
       }
     }
   
-    h3 {
+    a {
       font-size: 1.7rem;
       font-weight: bolder;
       margin: 10px;
@@ -460,6 +460,7 @@ $search-page-font: "Roboto", sans-serif;
       color: #fff;
       text-shadow: 0 0 5px rgba(0, 0, 0, 0.5);
       text-align: center;
+      text-decoration: none;
     }
   
 

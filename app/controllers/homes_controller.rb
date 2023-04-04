@@ -5,6 +5,7 @@ class HomesController < ApplicationController
   end
 
   def show
+    
   end
 
   def search
