@@ -1,6 +1,7 @@
 class Building < ApplicationRecord
   belongs_to :admin
-  has_many :rooms
+  has_many :rooms, dependent: :destroy
+  accepts_nested_attributes_for :rooms
   has_one_attached :image
 
   with_options presence: true do

@@ -4,9 +4,10 @@
 <div class="sin-up-page">
   <div class="room-up-page-image"></div>
   <div class="building-up-page-main">
-    <%= form_with model: @room, url: rooms_path, local: true do |f| %>
-    <%= render 'shared/error_messages', model: f.object %>
-    <div class="user-registration-header">
+    <%= form_with model: @room, url: rooms_path, local: true do |r| %>
+    <%= render 'shared/error_messages', model: r.object %>
+    <%= r.fields_for :rooms do |f| %>
+    <div class="room-up-header">
       <h1 class="user-registration-header-logo">新規部屋登録</h1>
     </div>
     <div class="user-registration-form">
@@ -39,7 +40,7 @@
         <tr>
           <th>部屋番号</th>
           <td class="form-text-box">
-            <%= f.text_field :room_number, class:"rooms-text", id:"room-number" %>
+            <%= f.text_field :room_number, class:"rooms-text", id:"room-number", placeholder:"1010" %>
             <span class="small-text">（半角数字）</span>
             <p class="form-note">
               例：101号室のお部屋 → 101と記載
@@ -120,7 +121,7 @@
         <tr>
           <th>入居可能日</th>
           <td class="form-text-box">
-            <%= raw sprintf(
+        <%= raw sprintf(
                   f.date_select(
                     :available_date,
                     discard_day: true,
@@ -134,11 +135,11 @@
         </tr>
       </tbody>
     </table>
+    <% end %>
     <div class="actions">
-      <%= f.submit "アップロードする" ,class:"upload-btn" %>
+      <%= r.submit "アップロードする" ,class:"upload-btn" %>
     </div>
     <% end %>
   </div>
 </div>
 <%= render "shared/footer" %>
-

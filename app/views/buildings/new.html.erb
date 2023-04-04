@@ -1,7 +1,7 @@
 <%= render "shared/second-header" %>
 <%= render "shared/admin-header" %>
 
-<div class="sin-up-page">
+<div class="building-up-page">
   <div class="building-up-page-image"></div>
   <div class="building-up-page-main">
     <%= form_with model: @building, url: buildings_path, local: true do |f| %>
@@ -120,6 +120,33 @@
         </tr>
       </tbody>
     </table>
+    <div class="user-registration-form">
+      <h3 class="user-registration-form-title">部屋を追加</h3>
+    </div>
+    <table class="room-up-input">
+      <thead>
+        <tr>
+          <th class="room-image">部屋画像</th>
+          <th class="room-room-number">部屋番号</th>
+          <th class="room-rent">家賃</th>
+          <th class="room-management-fee">管理共益費等</th>
+          <th class="room-deposit">敷金</th>
+          <th class="room-key-money">礼金</th>
+          <th class="room-layout">間取り</th>
+          <th class="room-floor-area">専有面積</th>
+          <th class="room-available-date">入居可能日</th>
+          <th class="room-delete-btn"></th>
+        </tr>
+      </thead>
+      <tbody>
+        <%= f.fields_for :rooms do |t| %>
+        <%= render "buildings/room_fields", f: t %>
+        <% end %>
+      </tbody>
+    </table>
+    <div class="add-upload-btn">
+      <%= link_to_add_association "フォームを追加", f, :rooms %>
+    </div>
     <div class="actions">
       <%= f.submit "アップロードする" ,class:"upload-btn" %>
     </div>

@@ -3,15 +3,15 @@ class BuildingsController < ApplicationController
 
   def new
     @building = Building.new
+    @rooms = @building.rooms.build
   end
 
   def create
     @building = Building.new(building_params)
+    @building.rooms.each { |room| room.admin = current_admin }
     if @building.save
-      flash[:success] = "商品を登録しました"
       redirect_to root_path
     else
-      flash.now[:danger] = "登録に失敗しました"
       render :new
     end
   end
@@ -36,6 +36,6 @@ class BuildingsController < ApplicationController
 
   def building_params
     params.require(:building).permit(:building_name, :post_code, :prefecture_id, :city, :address, :access, :build_year,
-      :story, :image).merge(admin_id: current_admin.id)
+      :story, :image, rooms_attributes: [:id, :room_number, :rent, :management_fee, :deposit, :key_money, :layout, :floor_area, :available_date, :image, :_destroy]).merge(admin_id: current_admin.id)
   end
 end
