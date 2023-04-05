@@ -1,0 +1,81 @@
+<%= render "shared/header" %>
+
+<main>
+  <%= render "shared/admin-header"%>
+  <div class="show-page">
+    <div class="show-page-main">
+      <div class='show-page-building'>
+        <div class="show-page-building-image">
+          <% if @building.image.attached? %>
+            <%= image_tag @building.image, class: "building-image" %>
+          <% end %>
+        </div>
+        <div class="show-page-building-info">
+          <table>
+            <tbody>
+              <tr>
+                <th>マンション名：</th>
+                <td><%= @building.building_name %></td>
+              </tr>
+              <tr>
+                <th>郵便番号：</th>
+                <td><%= @building.post_code %></td>
+              </tr>
+              <tr>
+                <th>住所：</th>
+                <td>
+                  <%= @building.prefecture.name %>
+                  <%= @building.city %>
+                  <%= @building.address %>
+                </td>
+              </tr>
+              <tr>
+                <th>アクセス：</th>
+                <td><%= @building.access %></td>
+              </tr>
+              <tr>
+                <th>築年数：</th>
+                <td><%= @building.build_year.strftime('%Y年%-m月%-d日') %></td>
+              </tr>
+              <tr>
+                <th>総階数：</th>
+                <td><%= @building.story %>階建</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+      <div class="show-page-rooms-row">
+        <div class="search-page-rooms-right">
+          <table class="search-page-rooms-table">
+            <thead class="search-page-rooms-heading">
+              <tr>
+                <th class="search-page-rooms-heading">部屋</th>
+                <th class="search-page-rooms-heading">間取り</th>
+                <th class="search-page-rooms-heading">家賃</th>
+                <th class="search-page-rooms-heading">管理料</th>
+                <th class="search-page-rooms-heading">お気に入り</th>
+                <th class="search-page-rooms-heading">お問い合わせ</th>
+                <th class="search-page-rooms-heading">詳細</th>
+              </tr>
+            </thead>
+            <tbody>
+              <% @building.rooms.order(room_number: :asc).each do |room| %>
+                <tr class="search-page-rooms-r">
+                  <td class="search-page-rooms-data"><%= room.room_number %></td>
+                  <td class="search-page-rooms-data"><%= room.layout %></td>
+                  <td class="search-page-rooms-data"><%= room.rent %>円</td>
+                  <td class="search-page-rooms-data"><%= room.management_fee %>円</td>
+                  <td class="search-page-rooms-data"><%= image_tag "star.png" ,class:"favorite-star-icon" ,width:"20",height:"20"%><%= link_to 'お気に入り', "#", class: "favorite-btn" %></td>
+                  <td class="search-page-rooms-data"><%= link_to 'お問い合わせ', "#" %></td>
+                  <td class="search-page-rooms-data"><%= link_to '詳細', "#" %></td>
+                </tr>
+              <% end %>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+</main>
+<%= render "shared/footer" %>
