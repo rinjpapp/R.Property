@@ -4,11 +4,10 @@
 <div class="sin-up-page">
   <div class="room-up-page-image"></div>
   <div class="building-up-page-main">
-    <%= form_with model: @room, url: rooms_path, local: true do |r| %>
-    <%= render 'shared/error_messages', model: r.object %>
-    <%= r.fields_for :rooms do |f| %>
+    <%= form_with model: @room, url: building_rooms_path, method: :post, local: true do |f| %>
+    <%= render 'shared/error_messages', model: f.object %>
     <div class="room-up-header">
-      <h1 class="user-registration-header-logo">新規部屋登録</h1>
+      <h1 class="user-registration-header-logo"><%= @building.building_name %>の新規部屋登録</h1>
     </div>
     <div class="user-registration-form">
       <h3 class="user-registration-form-title">部屋の写真をアップロード</h3>
@@ -31,12 +30,6 @@
     </div>
     <table class="user-registration-input">
       <tbody>
-        <tr>
-          <th>建物名</th>
-          <td class="form-text-box">
-          <%= f.collection_select :building_id, Building.all, :id, :building_name, { prompt: '選択してください' }, class: "rooms-select" %>
-          </td>
-        </tr>
         <tr>
           <th>部屋番号</th>
           <td class="form-text-box">
@@ -135,9 +128,8 @@
         </tr>
       </tbody>
     </table>
-    <% end %>
     <div class="actions">
-      <%= r.submit "アップロードする" ,class:"upload-btn" %>
+      <%= f.submit "アップロードする" ,class:"upload-btn" %>
     </div>
     <% end %>
   </div>
