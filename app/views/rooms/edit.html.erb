@@ -1,0 +1,137 @@
+<%= render "shared/second-header" %>
+<%= render "shared/admin-header" %>
+
+<div class="sin-up-page">
+  <div class="room-up-page-image"></div>
+  <div class="building-up-page-main">
+    <%= form_with model: @room, url: building_room_path, local: true do |f| %>
+    <%= render 'shared/error_messages', model: f.object %>
+    <div class="room-up-header">
+      <h1 class="user-registration-header-logo">部屋番号：<%= @room.room_number %>の編集</h1>
+    </div>
+    <div class="user-registration-form">
+      <h3 class="user-registration-form-title">部屋の写真をアップロード</h3>
+    </div>
+    <table class="user-registration-input">
+      <tbody>
+        <tr>
+          <th>部屋画像</th>
+          <td class="form-text-box">
+            <%= f.file_field :image, id:"item-image" %>
+            <p class="form-note">
+              クリックして写真をアップロード
+            </p>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+    <div class="user-registration-form">
+      <h3 class="user-registration-form-title">部屋情報の記載</h3>
+    </div>
+    <table class="user-registration-input">
+      <tbody>
+        <tr>
+          <th>部屋番号</th>
+          <td class="form-text-box">
+            <%= f.text_field :room_number, class:"rooms-text", id:"room-number", placeholder:"1010" %>
+            <span class="small-text">（半角数字）</span>
+            <p class="form-note">
+              例：101号室のお部屋 → 101と記載
+            </p>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+    <div class="user-registration-form">
+      <h3 class="user-registration-form-title">賃料等の情報の記載</h3>
+    </div>
+    <table class="user-registration-input">
+      <tbody>
+        <tr>
+          <th>家賃</th>
+          <td class="form-text-box">
+          <%= f.text_field :rent, class:"rooms-text", id:"rent" %>円
+          <span class="small-text">（半角数字）</span>
+          </td>
+        </tr>
+        <tr>
+          <th>管理共益費等</th>
+          <td class="form-text-box">
+          <%= f.text_field :management_fee, class:"rooms-text", id:"management_fee" %>円
+            <span class="small-text">（半角数字）</span>
+            <p class="form-note">
+              ない場合は0と記載
+            </p>
+          </td>
+        </tr>
+        <tr>
+          <th>敷金</th>
+          <td class="form-text-box">
+            <%= f.text_field :deposit, class:"rooms-text", id:"deposit" %>円
+            <span class="small-text">（半角数字）</span>
+            <p class="form-note">
+              ない場合は0と記載
+            </p>
+          </td>
+        </tr>
+        <tr>
+          <th>礼金</th>
+          <td class="form-text-box">
+            <%= f.text_field :key_money, class:"rooms-text", id:"key_money" %>円
+            <span class="small-text">（半角数字）</span>
+            <p class="form-note">
+              ない場合は0と記載
+            </p>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+    <div class="user-registration-form">
+      <h3 class="user-registration-form-title">部屋の詳細情報の記載</h3>
+    </div>
+    <table class="user-registration-input">
+      <tbody>
+        <tr>
+          <th>間取り</th>
+          <td class="form-text-box">
+          <%= f.text_field :layout, class:"rooms-text", id:"layout" %>
+          <span class="small-text">（半角数字と大文字）</span>
+            <p class="form-note">
+              例：2LDK
+            </p>
+          </td>
+        </tr>
+        <tr>
+          <th>専有面積</th>
+          <td class="form-text-box">
+            <%= f.text_field :floor_area, class:"rooms-text", id:"floor_area" %>㎡
+            <span class="small-text">（半角数字）</span>
+            <p class="form-note">
+              少数第一位まで記載してください
+            </p>
+          </td>
+        </tr>
+        <tr>
+          <th>入居可能日</th>
+          <td class="form-text-box">
+        <%= raw sprintf(
+                  f.date_select(
+                    :available_date,
+                    discard_day: true,
+                    use_month_numbers: true,
+                    prompt:'--',
+                    start_year: 1990,
+                    end_year: (Time.now.year + 2),
+                    date_separator: '%s'),
+                  " 年 ") + " 月 " %>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+    <div class="actions">
+      <%= f.submit "アップデートする" ,class:"upload-btn" %>
+    </div>
+    <% end %>
+  </div>
+</div>
+<%= render "shared/footer" %>
