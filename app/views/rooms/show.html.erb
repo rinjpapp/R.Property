@@ -38,7 +38,13 @@
             <tbody>
               <tr>
                 <th>マンション名：</th>
-                <td><%= @room.building.building_name%></td>
+                <td>
+                  <% if admin_signed_in? %>
+                    <%= link_to "#{@room.building.building_name}", "#" %>
+                  <% else %>
+                    <%= @room.building.building_name %>
+                  <% end %>
+                </td>
               </tr>
             </tbody>
           </table>
@@ -46,7 +52,13 @@
             <tbody>
               <tr>
                 <th>部屋：</th>
-                <td><%= @room.room_number%></td>
+                <td>
+                  <% if admin_signed_in? %>
+                    <%= link_to "#{@room.room_number}", edit_building_room_path(@room.building.id, @room.id) %>
+                  <% else %>
+                    <%= @room.room_number%>
+                  <% end %>
+                </td>
                 <th>入居可能日：</th>
                 <td><%= @room.available_date.strftime("%Y年%-m月") %></td>
               </tr>
@@ -95,17 +107,28 @@
             <tbody>
               <% @rooms.where(building_id: @room.building.id).where.not(id: @room.id).order(room_number: :asc).each do |room| %>
                 <tr class="search-page-rooms-r">
-                  <td class="search-page-rooms-data"><%= room.room_number %></td>
+                  <td class="search-page-rooms-data">
+                    <% if admin_signed_in? %>
+                      <%= link_to "#{room.room_number}", edit_building_room_path(room.building.id, room.id) %>
+                    <% else %>
+                      <%= link_to "#{room.room_number}", building_room_path(room.building.id, room.id) %>
+                    <% end %>
+                  </td>
                   <td class="search-page-rooms-data"><%= room.layout %></td>
                   <td class="search-page-rooms-data"><%= room.rent %>円</td>
                   <td class="search-page-rooms-data"><%= room.management_fee %>円</td>
                   <td class="search-page-rooms-data"><%= image_tag "star.png" ,class:"favorite-star-icon" ,width:"20",height:"20"%><%= link_to 'お気に入り', "#", class: "favorite-btn" %></td>
                   <td class="search-page-rooms-data"><%= link_to 'お問い合わせ', "#" %></td>
-                  <td class="search-page-rooms-data"><%= link_to '詳細', building_room_path(room.building.id, room.id)  %></td>
+                  <td class="search-page-rooms-data"><%= link_to '詳細', building_room_path(room.building.id, room.id) %></td>
                 </tr>
               <% end %>
             </tbody>
           </table>
+          <% if admin_signed_in? %>
+            <div class="actions">
+              <%= link_to '部屋を追加する', new_building_room_path(@room.building.id) %>
+            </div>
+          <% end %>
         </div>
         <div class="show-page-building-info">
           <table>

@@ -15,7 +15,13 @@
             <tbody>
               <tr>
                 <th>マンション名：</th>
-                <td><%= @building.building_name %></td>
+                <td>
+                  <% if admin_signed_in? %>
+                    <%= link_to "#{@building.building_name}", "#" %>
+                  <% else %>
+                    <%= @building.building_name %>
+                  <% end %>
+                </td>
               </tr>
               <tr>
                 <th>郵便番号：</th>
@@ -62,7 +68,13 @@
             <tbody>
               <% @building.rooms.order(room_number: :asc).each do |room| %>
                 <tr class="search-page-rooms-r">
-                  <td class="search-page-rooms-data"><%= room.room_number %></td>
+                  <td class="search-page-rooms-data">
+                    <% if admin_signed_in? %>
+                      <%= link_to "#{room.room_number}", edit_building_room_path(room.building.id, room.id) %>
+                    <% else %>
+                      <%= link_to "#{room.room_number}", building_room_path(@building.id, room.id) %>
+                    <% end %>
+                  </td>
                   <td class="search-page-rooms-data"><%= room.layout %></td>
                   <td class="search-page-rooms-data"><%= room.rent %>円</td>
                   <td class="search-page-rooms-data"><%= room.management_fee %>円</td>
@@ -73,6 +85,11 @@
               <% end %>
             </tbody>
           </table>
+          <% if admin_signed_in? %>
+            <div class="actions">
+              <%= link_to '部屋を追加する', new_building_room_path(@building.id) %>
+            </div>
+          <% end %>
         </div>
       </div>
     </div>
