@@ -40,9 +40,9 @@
                 <th>マンション名：</th>
                 <td>
                   <% if admin_signed_in? %>
-                    <%= link_to "#{@room.building.building_name}", "#" %>
+                    <%= link_to "#{@room.building.building_name}", edit_building_path(@room.building.id) %>
                   <% else %>
-                    <%= @room.building.building_name %>
+                    <%= link_to "#{@room.building.building_name}", home_path(@room.building.id) %>
                   <% end %>
                 </td>
               </tr>

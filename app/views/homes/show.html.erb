@@ -17,7 +17,7 @@
                 <th>マンション名：</th>
                 <td>
                   <% if admin_signed_in? %>
-                    <%= link_to "#{@building.building_name}", "#" %>
+                    <%= link_to "#{@building.building_name}", edit_building_path(@building.id) %>
                   <% else %>
                     <%= @building.building_name %>
                   <% end %>
