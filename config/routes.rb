@@ -16,7 +16,7 @@ Rails.application.routes.draw do
   root to: 'homes#index'
   resources :residents, only: :index
   resources :applicants, only: :index
-  resources :buildings, only: [:new, :create] do
+  resources :buildings, only: [:new, :create, :edit, :update] do
     resources :rooms, only: [:new, :create, :show, :edit, :update]
   end
   resources :homes, only: :show do
