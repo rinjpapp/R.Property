@@ -1,0 +1,42 @@
+  <table class="nested-fields room-up-input">
+    <tbody>
+      <tr>
+        <td class="room-up-form room-image">
+          <%= f.file_field :image, id:"room-image" %>
+        </td>
+        <td class="room-up-form room-room-number">
+          <%= f.text_field :room_number, class:"rooms-text", id:"room-number" %>
+        </td>
+        <td class="room-up-form room-rent">
+          <%= f.text_field :rent, class:"rooms-text", id:"rent" %>円
+        </td>
+        <td class="room-up-form room-management-fee">
+          <%= f.text_field :management_fee, class:"rooms-text", id:"management_fee" %>円
+        </td>
+        <td class="room-up-form room-deposit">
+          <%= f.text_field :deposit, class:"rooms-text", id:"deposit" %>円
+        </td>
+        <td class="room-up-form room-key-money">
+          <%= f.text_field :key_money, class:"rooms-text", id:"key_money" %>円
+        </td>
+        <td class="room-up-form room-layout">
+          <%= f.text_field :layout, class:"rooms-text", id:"layout" %>
+        </td>
+        <td class="room-up-form room-floor-area">
+          <%= f.text_field :floor_area, class:"rooms-text", id:"floor_area" %>㎡
+        </td>
+        <td class="room-up-form room-available-date">
+          <%= raw sprintf(
+                  f.date_select(
+                    :available_date,
+                    discard_day: true,
+                    use_month_numbers: true,
+                    prompt:'--',
+                    start_year: 1990,
+                    end_year: (Time.now.year + 2),
+                    date_separator: '%s'),
+                    "年 ") + "月 " %>
+        </td>
+      </tr>
+    </tbody>
+  </table>
