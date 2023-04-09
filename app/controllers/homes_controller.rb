@@ -1,10 +1,11 @@
 class HomesController < ApplicationController
-  before_action :set_ransack, only: [:index, :search]
+  before_action :set_ransack
 
   def index
   end
 
   def show
+    @building = Building.find(params[:id])
   end
 
   def search

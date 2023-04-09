@@ -1,21 +1,9 @@
+<% breadcrumb :search_homes %>
 <%= render "shared/header" %>
 
 <main>
-  <%# /管理者用のヘッダーリンクリスト/ %>
-  <% if admin_signed_in? %>
-    <div class="admin-header">
-      <ul class="admin-header-links">
-        <li class="admin-header-link"><%= link_to "＃＃＃＃＃＃＃＃", "#", class: "admin-header-logo" %></li>
-        <li class="admin-header-link"><%= link_to "新規部屋情報登録", new_room_path, class: "admin-header-logo" %></li>
-        <li class="admin-header-link"><%= link_to "新規建物情報登録", new_building_path, class: "admin-header-logo" %></li>
-        <li class="admin-header-link"><%= link_to "＃＃＃＃＃＃＃＃", "#", class: "admin-header-logo" %></li>
-        <li class="admin-header-link"><%= link_to "＃＃＃＃＃＃＃＃", "#", class: "admin-header-logo" %></li>
-        <li class="admin-header-link"><%= link_to "＃＃＃＃＃＃＃＃", "#", class: "admin-header-logo" %></li>
-      </ul>
-    </div>
-  <% end %>
-  <%# ///管理者用のヘッダーリンクリスト/// %>
-
+<%= render "shared/admin-header"%>
+<%= render "shared/breadcrumbs"%>
   <div class="search-page">
     <div class="search-page-left">
       <div class="sort-links-title">
@@ -43,7 +31,7 @@
               <% if building.image.attached? %>
                 <%= image_tag building.image, class: "building-image" %>
               <% end %>
-              <h3><%= building_name %></h3>
+              <h3><%= link_to building_name, home_path(building.id) %></h3>
             </div>
             <div class="search-page-rooms-right">
               <table class="search-page-rooms-table">
@@ -61,13 +49,19 @@
                 <tbody>
                   <% rooms.each do |room| %>
                     <tr class="search-page-rooms-r">
-                      <td class="search-page-rooms-data"><%= room.room_number %></td>
+                      <td class="search-page-rooms-data">
+                        <% if admin_signed_in? %>
+                          <%= link_to "#{room.room_number}", edit_building_room_path(room.building.id, room.id) %>
+                        <% else %>
+                          <%= link_to "#{room.room_number}", building_room_path(building.id, room.id) %>
+                        <% end %>
+                      </td>
                       <td class="search-page-rooms-data"><%= room.layout %></td>
                       <td class="search-page-rooms-data"><%= room.rent %>円</td>
                       <td class="search-page-rooms-data"><%= room.management_fee %>円</td>
                       <td class="search-page-rooms-data"><%= image_tag "star.png" ,class:"favorite-star-icon" ,width:"20",height:"20"%><%= link_to 'お気に入り', "#", class: "favorite-btn" %></td>
                       <td class="search-page-rooms-data"><%= link_to 'お問い合わせ', "#" %></td>
-                      <td class="search-page-rooms-data"><%= link_to '詳細', "#" %></td>
+                      <td class="search-page-rooms-data"><%= link_to '詳細', building_room_path(building.id, room.id) %></td>
                     </tr>
                   <% end %>
                 </tbody>

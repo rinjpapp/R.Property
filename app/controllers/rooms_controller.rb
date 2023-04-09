@@ -1,19 +1,35 @@
 class RoomsController < ApplicationController
-  before_action :access_only_admin
-  before_action :set_building
+  before_action :access_only_admin, except: [:show]
+  before_action :set_building, only: [:new, :create]
+  before_action :set_ransack, only: :show
 
   def new
-    @room = Room.new
+    @room = @building.rooms.build
   end
 
   def create
-    @room = Room.new(room_params)
+    @room = @building.rooms.build(room_params)
     if @room.save
-      flash[:success] = "商品を登録しました"
-      redirect_to root_path
+      redirect_to building_room_path(@building.id, @room.id)
     else
-      flash.now[:danger] = "登録に失敗しました"
       render :new
+    end
+  end
+
+  def show
+    @room = Room.find(params[:id])
+  end
+
+  def edit
+    @room = Room.find(params[:id])
+  end
+
+  def update
+    @room = Room.find(params[:id])
+    if @room.update(room_params)
+      redirect_to building_room_path(@room.building.id, @room.id)
+    else
+      render :edit
     end
   end
 
@@ -37,10 +53,19 @@ class RoomsController < ApplicationController
 
   def room_params
     params.require(:room).permit(:room_number, :rent, :management_fee, :deposit, :key_money, :layout, :floor_area,
-                                 :available_date, :image, :building_id).merge(admin_id: current_admin.id)
+                                 :available_date, :image).merge(admin_id: current_admin.id)
   end
 
   def set_building
-    @building = Building.find_by(id: params[:room])
+    @building = Building.find_by(id: params[:building_id])
+  end
+
+    def set_ransack
+    if params[:q]&.dig(:layout)
+      squished_keywords = params[:q][:layout].squish
+      params[:q][:layout_cont_any] = squished_keywords.split(" ")
+    end
+    @q = Room.includes(:building).ransack(params[:q])
+    @rooms = @q.result
   end
 end

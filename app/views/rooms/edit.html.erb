@@ -4,10 +4,10 @@
 <div class="sin-up-page">
   <div class="room-up-page-image"></div>
   <div class="building-up-page-main">
-    <%= form_with model: @room, url: building_rooms_path, method: :post, local: true do |f| %>
+    <%= form_with model: @room, url: building_room_path, local: true do |f| %>
     <%= render 'shared/error_messages', model: f.object %>
     <div class="room-up-header">
-      <h1 class="user-registration-header-logo"><%= @building.building_name %>の新規部屋登録</h1>
+      <h1 class="user-registration-header-logo"><%= @room.building.building_name %>　<%= @room.room_number %>号室の編集</h1>
     </div>
     <div class="user-registration-form">
       <h3 class="user-registration-form-title">部屋の写真をアップロード</h3>
@@ -129,7 +129,7 @@
       </tbody>
     </table>
     <div class="actions">
-      <%= f.submit "アップロードする" ,class:"upload-btn" %>
+      <%= f.submit "アップデートする" ,class:"upload-btn" %>
     </div>
     <% end %>
   </div>

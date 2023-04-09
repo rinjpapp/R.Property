@@ -16,6 +16,20 @@ class BuildingsController < ApplicationController
     end
   end
 
+  def edit
+    @building = Building.find(params[:id])
+  end
+
+  def update
+    @building = Building.find(params[:id])
+    @building.rooms.each { |room| room.admin = current_admin }
+    if @building.update(building_params)
+      redirect_to home_path(@building.id)
+    else
+      render :edit
+    end
+  end
+
   private
 
   def access_only_admin
