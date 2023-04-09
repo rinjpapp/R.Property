@@ -7,7 +7,7 @@
     <%= form_with model: @room, url: building_room_path, local: true do |f| %>
     <%= render 'shared/error_messages', model: f.object %>
     <div class="room-up-header">
-      <h1 class="user-registration-header-logo">部屋番号：<%= @room.room_number %>の編集</h1>
+      <h1 class="user-registration-header-logo"><%= @room.building.building_name %>　<%= @room.room_number %>号室の編集</h1>
     </div>
     <div class="user-registration-form">
       <h3 class="user-registration-form-title">部屋の写真をアップロード</h3>
