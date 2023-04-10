@@ -13,4 +13,9 @@ class User < ApplicationRecord
   end
 
   has_one :individual
+  has_many :favorites
+
+  def favorite_find(room_id)
+    favorites.where(room_id: room_id).exists?
+  end
 end

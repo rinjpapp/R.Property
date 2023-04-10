@@ -2,6 +2,7 @@ class Room < ApplicationRecord
   belongs_to :admin
   belongs_to :building
   has_one_attached :image
+  has_many :favorites
 
   with_options presence: true do
     validates :room_number, numericality: { only_integer: true }
