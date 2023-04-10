@@ -1,6 +1,4 @@
 Rails.application.routes.draw do
-  get 'favorites/create'
-  get 'favorites/destroy'
   devise_for :admins, controllers: {
     sessions: 'admins/sessions',
     passwords:     'admins/passwords',
@@ -16,8 +14,12 @@ Rails.application.routes.draw do
     post 'individuals', to: 'users/registrations#create_individual'
   end
   root to: 'homes#index'
-  resources :residents, only: :index
-  resources :applicants, only: :index
+  
+  resources :users, only: :index do
+    resources :residents, only: :index
+    resources :applicants, only: :index
+  end
+
   resources :buildings, only: [:new, :create, :edit, :update] do
     resources :rooms, only: [:new, :create, :show, :edit, :update]
   end
