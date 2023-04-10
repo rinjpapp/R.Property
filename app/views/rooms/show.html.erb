@@ -86,7 +86,10 @@
               </tr>
               <tr>
                 <th>お気に入り</th>
-                <td></td>
+                <td>
+                <div id="favorites_<%= @room.id %>"><%= render 'homes/favorites', room: @room %></div>
+                  
+                </td>
                 <th>お問い合わせ</th>
                 <td></td>
               </tr>
@@ -121,7 +124,9 @@
                   <td class="search-page-rooms-data"><%= room.layout %></td>
                   <td class="search-page-rooms-data"><%= room.rent %>円</td>
                   <td class="search-page-rooms-data"><%= room.management_fee %>円</td>
-                  <td class="search-page-rooms-data"><%= image_tag "star.png" ,class:"favorite-star-icon" ,width:"20",height:"20"%><%= link_to 'お気に入り', "#", class: "favorite-btn" %></td>
+                  <td class="search-page-rooms-data">
+                    <div id="favorites_<%= room.id %>"><%= render 'homes/favorites', room: room %></div>
+                  </td>
                   <td class="search-page-rooms-data"><%= link_to 'お問い合わせ', "#" %></td>
                   <td class="search-page-rooms-data"><%= link_to '詳細', building_room_path(room.building.id, room.id) %></td>
                 </tr>
