@@ -1,0 +1,28 @@
+  <% if user_signed_in? %>
+    <% case current_user.status_id %>
+    <%# 入居者の方 %>
+    <% when 2 %>
+    <div class="admin-header">
+      <ul class="admin-header-links">
+        <li class="admin-header-link"><%= link_to "マイページ", user_residents_path(current_user.id), class: "admin-header-logo" %></li>
+        <li class="admin-header-link"><%= link_to "＃＃＃＃＃＃＃＃", "#", class: "admin-header-logo" %></li>
+        <li class="admin-header-link"><%= link_to "＃＃＃＃＃＃＃＃", "#", class: "admin-header-logo" %></li>
+        <li class="admin-header-link"><%= link_to "＃＃＃＃＃＃＃＃", "#", class: "admin-header-logo" %></li>
+        <li class="admin-header-link"><%= link_to "＃＃＃＃＃＃＃＃", "#", class: "admin-header-logo" %></li>
+        <li class="admin-header-link"><%= link_to "ログアウト", destroy_user_session_path, method: :delete, class: "admin-header-logo" %></li>
+      </ul>
+    </div>
+    <%# 申込者の方 %>
+    <% when 3 %>
+    <div class="admin-header">
+      <ul class="admin-header-links">
+        <li class="admin-header-link"><%= link_to "マイページ", user_applicants_path(current_user.id), class: "admin-header-logo" %></li>
+        <li class="admin-header-link"><%= link_to "物件検索ページ", search_homes_path, class: "admin-header-logo" %></li>
+        <li class="admin-header-link"><%= link_to "＃＃＃＃＃＃＃＃", "#", class: "admin-header-logo" %></li>
+        <li class="admin-header-link"><%= link_to "＃＃＃＃＃＃＃＃", "#", class: "admin-header-logo" %></li>
+        <li class="admin-header-link"><%= link_to "＃＃＃＃＃＃＃＃", "#", class: "admin-header-logo" %></li>
+        <li class="admin-header-link"><%= link_to "ログアウト", destroy_user_session_path, method: :delete, class: "admin-header-logo" %></li>
+      </ul>
+    </div>
+    <% end %>
+  <% end %>
