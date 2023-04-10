@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  get 'favorites/create'
+  get 'favorites/destroy'
   devise_for :admins, controllers: {
     sessions: 'admins/sessions',
     passwords:     'admins/passwords',
@@ -24,4 +26,6 @@ Rails.application.routes.draw do
       get 'search'
     end
   end
+  post 'favorite/:id' => 'favorites#create', as: 'create_favorite'
+  delete 'favorite/:id' => 'favorites#destroy', as: 'destroy_favorite'
 end
