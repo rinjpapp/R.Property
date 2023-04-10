@@ -1,6 +1,19 @@
 <%= render "shared/second-header" %>
+  <%= render "shared/users-header" %>
+
 
 Applicantサイト
+
+<% @user_favorites.each do |favorite| %>
+  <div>
+    <%= favorite.room.building.building_name %>
+    <%= favorite.room.room_number %>
+  </div>
+<% end %>
+<% if @user_favorites.empty? %>
+  <h2>お気に入りはありません</h2>
+<% end %>
+
 <div class="user-access">
   <%= link_to "Log out", destroy_user_session_path, method: :delete, class: "user-access-link" %>
 </div>
