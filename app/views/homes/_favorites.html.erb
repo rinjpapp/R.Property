@@ -1,9 +1,9 @@
 <% if user_signed_in? %>
   <% if current_user.favorite_find(room.id) %>
-    <%= link_to 'お気に入り済', destroy_favorite_path(room.id), method: :delete, remote: true %>
+    <%= link_to "<i class='fa-solid fa-thumbs-up' style='color: black;'>お気に入り</i>".html_safe, destroy_favorite_path(room.id), method: :delete, remote: true %>
   <% else %>
-    <%= link_to 'お気に入り登録', create_favorite_path(room.id), method: :post, remote: true %>
+    <%= link_to "<i class='fa-regular fa-thumbs-up' style='color: black;'>お気に入り</i>".html_safe, create_favorite_path(room.id), method: :post, remote: true %>
   <% end %>
 <% else %>
-  <%= link_to 'お気に入り', "#", class: "favorite-btn" %>
+  <%= link_to "<i class='fa-regular fa-thumbs-up' style='color: black;'>お気に入り</i>".html_safe, "#", class: "favorite-btn" %>
 <% end %>

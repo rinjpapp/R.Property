@@ -87,8 +87,7 @@
               <tr>
                 <th>お気に入り</th>
                 <td>
-                <div id="favorites_<%= @room.id %>"><%= render 'homes/favorites', room: @room %></div>
-                  
+                  <div id="favorites_<%= @room.id %>"><%= render 'homes/favorites', room: @room %></div>
                 </td>
                 <th>お問い合わせ</th>
                 <td></td>
@@ -107,7 +106,7 @@
                 <th class="search-page-rooms-heading">家賃</th>
                 <th class="search-page-rooms-heading">管理料</th>
                 <th class="search-page-rooms-heading">お気に入り</th>
-                <th class="search-page-rooms-heading">お問い合わせ</th>
+                <th class="search-page-rooms-heading">お問合わせ</th>
                 <th class="search-page-rooms-heading">詳細</th>
               </tr>
             </thead>
@@ -122,13 +121,13 @@
                     <% end %>
                   </td>
                   <td class="search-page-rooms-data"><%= room.layout %></td>
-                  <td class="search-page-rooms-data"><%= room.rent %>円</td>
-                  <td class="search-page-rooms-data"><%= room.management_fee %>円</td>
+                  <td class="search-page-rooms-data"><%= room.rent / 10000 %>万円</td>
+                  <td class="search-page-rooms-data"><%= room.management_fee / 10000 %>万円</td>
                   <td class="search-page-rooms-data">
                     <div id="favorites_<%= room.id %>"><%= render 'homes/favorites', room: room %></div>
                   </td>
-                  <td class="search-page-rooms-data"><%= link_to 'お問い合わせ', "#" %></td>
-                  <td class="search-page-rooms-data"><%= link_to '詳細', building_room_path(room.building.id, room.id) %></td>
+                  <td class="search-page-rooms-data"><i class="fa-solid fa-envelope"></i><%= link_to 'お問合わせ', "#" %></td>
+                  <td class="search-page-rooms-data"><%= link_to "<i class='fa-solid fa-bars' style='margin-left: 10px;'></i>".html_safe, building_room_path(room.building.id, room.id) %></td>
                 </tr>
               <% end %>
             </tbody>

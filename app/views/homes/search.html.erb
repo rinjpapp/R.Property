@@ -8,20 +8,20 @@
   <div class="search-page">
     <div class="search-page-left">
       <div class="sort-links-title">
-        <h2>以下で並び替え</h2>
+        <h2><i class="fa-solid fa-filter" style="color: #ffffff; margin-right: 5px;"></i>以下で並び替え</h2>
       </div>
       <div class="sort-links-container">
-        <%= link_to '部屋が広い順', search_homes_path(largest: "true"), class: 'sort-link' %>
-        <%= link_to '部屋が狭い順', search_homes_path(smallest: "true"), class: 'sort-link' %>
-        <%= link_to '築年数が浅い順', search_homes_path(newest: "true"), class: 'sort-link' %>
-        <%= link_to '築年数が古い順', search_homes_path(oldest: "true"), class: 'sort-link' %>
-        <%= link_to '家賃が高い順', search_homes_path(highest: "true"), class: 'sort-link' %>
-        <%= link_to '家賃が低い順', search_homes_path(lowest: "true"), class: 'sort-link' %>
+        <%= link_to "<i class='fa-solid fa-arrow-down-wide-short'>  部屋が広い順</i>".html_safe, search_homes_path(largest: "true"), class: 'sort-link' %>
+        <%= link_to "<i class='fa-solid fa-arrow-down-short-wide'>  部屋が狭い順</i>".html_safe, search_homes_path(smallest: "true"), class: 'sort-link' %>
+        <%= link_to "<i class='fa-solid fa-sort'>  築年数が浅い順</i>".html_safe, search_homes_path(newest: "true"), class: 'sort-link' %>
+        <%= link_to "<i class='fa-solid fa-sort'>  築年数が古い順</i>".html_safe, search_homes_path(oldest: "true"), class: 'sort-link' %>
+        <%= link_to "<i class='fa-solid fa-arrow-down-9-1'>  家賃が高い順</i>".html_safe, search_homes_path(highest: "true"), class: 'sort-link' %>
+        <%= link_to "<i class='fa-solid fa-arrow-down-1-9'>  家賃が低い順</i>".html_safe, search_homes_path(lowest: "true"), class: 'sort-link' %>
       </div>
     </div>
     <div class="search-page-right">
       <div class='search-page-rooms-title-box'>
-        <h1 class='search-page-rooms-title'>検索結果一覧</h1>
+        <h1 class='search-page-rooms-title'><i class="fa-solid fa-rectangle-list" style="color: #ffffff; margin-right: 20px;"></i>検索結果一覧</h1>
       </div>
       <div class='search-page-rooms'>
         <% buildings = @rooms.group_by { |r| r.building.building_name } %>
@@ -32,7 +32,7 @@
               <% if building.image.attached? %>
                 <%= image_tag building.image, class: "building-image" %>
               <% end %>
-              <h3><%= link_to building_name, home_path(building.id) %></h3>
+              <h3><i class="fa-solid fa-building" style="color: #ffffff; font-size: 25px;"></i><%= link_to building_name, home_path(building.id) %></h3>
             </div>
             <div class="search-page-rooms-right">
               <table class="search-page-rooms-table">
@@ -43,7 +43,7 @@
                     <th class="search-page-rooms-heading">家賃</th>
                     <th class="search-page-rooms-heading">管理料</th>
                     <th class="search-page-rooms-heading">お気に入り</th>
-                    <th class="search-page-rooms-heading">お問い合わせ</th>
+                    <th class="search-page-rooms-heading">お問合わせ</th>
                     <th class="search-page-rooms-heading">詳細</th>
                   </tr>
                 </thead>
@@ -58,13 +58,13 @@
                         <% end %>
                       </td>
                       <td class="search-page-rooms-data"><%= room.layout %></td>
-                      <td class="search-page-rooms-data"><%= room.rent %>円</td>
-                      <td class="search-page-rooms-data"><%= room.management_fee %>円</td>
+                      <td class="search-page-rooms-data"><%= room.rent / 10000 %>万円</td>
+                      <td class="search-page-rooms-data"><%= room.management_fee / 10000 %>万円</td>
                       <td class="search-page-rooms-data">
                         <div id="favorites_<%= room.id %>"><%= render 'favorites', room: room %></div>
                       </td>
-                      <td class="search-page-rooms-data"><%= link_to 'お問い合わせ', "#" %></td>
-                      <td class="search-page-rooms-data"><%= link_to '詳細', building_room_path(building.id, room.id) %></td>
+                      <td class="search-page-rooms-data"><i class="fa-solid fa-envelope"></i><%= link_to 'お問合わせ', "#" %></td>
+                      <td class="search-page-rooms-data"><%= link_to "<i class='fa-solid fa-bars' style='margin-left: 10px;'></i>".html_safe, building_room_path(building.id, room.id) %></td>
                     </tr>
                   <% end %>
                 </tbody>

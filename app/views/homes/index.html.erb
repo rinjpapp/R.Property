@@ -26,10 +26,10 @@
         <div class="label-btns">
           <table class="user-input-link">
             <tr>
-              <td id="tr1" style="display:block;"><%= link_to "Log in", new_user_session_path, class: "user-access-link1" %></td>
+              <td id="tr1" style="display:block;"><%= link_to "<i class='fa-solid fa-arrow-right-to-bracket' style='margin-right: 10px;'></i>Log in".html_safe, new_user_session_path, class: "user-access-link1" %></td>
             </tr>
             <tr>
-              <td id="tr2" style="display:none;"><%= link_to "Log in", new_user_session_path, class: "user-access-link2" %></td>
+              <td id="tr2" style="display:none;"><%= link_to "<i class='fa-solid fa-arrow-right-to-bracket' style='margin-right: 10px;'></i>Log in".html_safe, new_user_session_path, class: "user-access-link2" %></td>
             </tr>
           </table>
         </div>
@@ -38,7 +38,7 @@
         <h2 class="user-access-text-label">こちらから会員登録</h2>
       </div>
       <div class="user-access">
-        <%= link_to "Register", new_user_registration_path, class: "user-access-link" %>
+        <%= link_to "<i class='fa-solid fa-user-plus' style='margin-right: 10px;'></i>Register".html_safe, new_user_registration_path, class: "user-access-link" %>
       </div>
     </div>
     <div class="user-access-side">
