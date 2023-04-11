@@ -135,7 +135,7 @@
           </table>
           <% if admin_signed_in? %>
             <div class="actions">
-              <%= link_to '部屋を追加する', new_building_room_path(@room.building.id) %>
+              <%= link_to "<i class='fa-regular fa-pen-to-square' style='margin-right: 10px;'></i>部屋を追加する".html_safe, new_building_room_path(@room.building.id) %>
             </div>
           <% end %>
         </div>

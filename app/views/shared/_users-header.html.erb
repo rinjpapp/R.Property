@@ -17,11 +17,11 @@
     <div class="admin-header">
       <ul class="admin-header-links">
         <li class="admin-header-link"><%= link_to "<i class='fa-solid fa-circle-user' style='margin-right: 10px;'></i>#{current_user.nickname}のページ".html_safe, user_applicants_path(current_user.id), class: "admin-header-logo" %></li>
-        <li class="admin-header-link"><%= link_to "物件検索ページ", search_homes_path, class: "admin-header-logo" %></li>
+        <li class="admin-header-link"><%= link_to "<i class='fa-solid fa-magnifying-glass' style='margin-right: 10px;'></i>物件検索ページ".html_safe, search_homes_path, class: "admin-header-logo" %></li>
         <li class="admin-header-link"><%= link_to "＃＃＃＃＃＃＃＃", "#", class: "admin-header-logo" %></li>
         <li class="admin-header-link"><%= link_to "＃＃＃＃＃＃＃＃", "#", class: "admin-header-logo" %></li>
         <li class="admin-header-link"><%= link_to "＃＃＃＃＃＃＃＃", "#", class: "admin-header-logo" %></li>
-        <li class="admin-header-link"><%= link_to "ログアウト", destroy_user_session_path, method: :delete, class: "admin-header-logo" %></li>
+        <li class="admin-header-link"><%= link_to "<i class='fa-solid fa-arrow-right-from-bracket' style='margin-right: 10px;'></i>ログアウト".html_safe, destroy_user_session_path, method: :delete, class: "admin-header-logo" %></li>
       </ul>
     </div>
     <% end %>
