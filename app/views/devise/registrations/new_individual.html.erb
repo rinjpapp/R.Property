@@ -61,7 +61,7 @@
           <th>電話番号</th>
           <td class="form-text-box">
             <%= f.collection_select :phone_id, Phone.all, :id, :name, {}, {class:"collection-select-phone", id:"phone", style: "height: 2rem" } %>
-            <%= f.text_field :phone_number, style: "width: 10rem" %>
+            <%= f.text_field :phone_number, style: "width: 10rem", maxlength: 11 %>
             <span class="small-text">（半角数字）  例：08012345678</span>
           </td>
         </tr>
