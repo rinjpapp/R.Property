@@ -78,9 +78,9 @@
     </table>
     <div class="my-page-link">
       <% if current_user.status_id == 2 %>
-        <%= link_to "完了してマイページに行く", residents_path, class: "button residents-button" %>
+        <%= link_to "完了してマイページに行く", user_residents_path(@user.id), class: "button residents-button" %>
       <% elsif current_user.status_id == 3 %>
-        <%= link_to "完了してマイページに行く", applicants_path, class: "button applicants-button" %>
+        <%= link_to "完了してマイページに行く", user_applicants_path(@user.id), class: "button applicants-button" %>
       <% end %>
     </div>
   </div>

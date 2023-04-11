@@ -5,9 +5,9 @@ class ApplicationController < ActionController::Base
   def after_sign_up_path_for(resource)
     case @user.status_id
     when 2
-      residents_path
+      user_residents_path(@user.id)
     when 3
-      applicants_path
+      user_applicants_path(@user.id)
     end
   end
 
@@ -18,9 +18,9 @@ class ApplicationController < ActionController::Base
     when User
       case @user.status_id
       when 2
-        residents_path
+        user_residents_path(@user.id)
       when 3
-        applicants_path
+        user_applicants_path(@user.id)
       end
     end
   end

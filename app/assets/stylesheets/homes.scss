@@ -262,62 +262,6 @@ main {
 }
 //* 会社連絡先情報コラム *//
 
-
-
-// 住人用トップページ
-.resident-main-page {
-  width: 90%;
-  height: auto;
-  margin: 0 auto;
-  background-color: #fff;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-.resident-main-page-left {
-  width: 45%;
-  height: 500px;
-  margin: 20px auto;
-  background-color: rgb(211, 211, 227);
-}
-
-.resident-main-page-right {
-  width: 45%;
-  height: 500px;
-  margin: 20px auto;
-  background-color: rgb(215, 193, 193);
-}
-// 住人用トップページ //
-
-// ユーザー用ヘッダー
-.user-header {
-  width: 99%;
-  height: 90%;
-  background-color: darkcyan;
-}
-
-.user-header-lists {
-  display: flex;
-  justify-content: space-evenly;
-  line-height: 50px;
-}
-
-.user-header-list {
-  font-size: 30px;
-  text-decoration: none;
-  color: rgb(206, 231, 234);
-}
-
-.header-link-space {
-  color: rgb(206, 231, 234);
-  font-weight: bold;
-  font-size: 40px;
-}
-// ユーザー用ヘッダー //
-
-
-
 // 物件検索ページ //
 .search-page {
   padding-top: 10px;
@@ -355,7 +299,7 @@ main {
 
   .sort-link {
     display: inline-block;  // リンクをブロック要素として表示
-    padding: 10px 20px;
+    padding: 10px 7px;
     margin: 5px;
     border: 2px solid #418893;
     border-radius: 5px;

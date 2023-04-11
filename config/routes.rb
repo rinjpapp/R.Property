@@ -14,8 +14,12 @@ Rails.application.routes.draw do
     post 'individuals', to: 'users/registrations#create_individual'
   end
   root to: 'homes#index'
-  resources :residents, only: :index
-  resources :applicants, only: :index
+  
+  resources :users, only: :index do
+    resources :residents, only: :index
+    resources :applicants, only: :index
+  end
+
   resources :buildings, only: [:new, :create, :edit, :update] do
     resources :rooms, only: [:new, :create, :show, :edit, :update]
   end
@@ -24,4 +28,6 @@ Rails.application.routes.draw do
       get 'search'
     end
   end
+  post 'favorite/:id' => 'favorites#create', as: 'create_favorite'
+  delete 'favorite/:id' => 'favorites#destroy', as: 'destroy_favorite'
 end

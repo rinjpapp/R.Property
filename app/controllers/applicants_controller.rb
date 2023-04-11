@@ -2,6 +2,8 @@ class ApplicantsController < ApplicationController
   before_action :authenticate_user!
 
   def index
+    user = User.find_by(id: params[:user_id])
+    @user_favorites = user.favorites
   end
 
   private 
@@ -9,7 +11,7 @@ class ApplicantsController < ApplicationController
   def authenticate_user!
     if user_signed_in?
       if current_user.status_id != 3 && current_user.status_id == 2
-        redirect_to residents_path
+        redirect_to user_residents_path(current_user.id)
       end
     else
       redirect_to root_path
