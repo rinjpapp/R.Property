@@ -1,9 +1,9 @@
 crumb :root do
-  link "Home", root_path
+  link "<i class='fa-solid fa-house'></i>".html_safe, root_path
 end
 
 crumb :search_homes do
-  link "物件一覧", search_homes_path
+  link "<i class='fa-solid fa-magnifying-glass'></i>物件一覧".html_safe, search_homes_path
 end
 
 crumb :home do
@@ -12,14 +12,14 @@ crumb :home do
   else
     @building = Building.find(params[:id])
   end
-  link "#{@building.building_name}", home_path(@building)
+  link "<i class='fa-regular fa-building'></i>#{@building.building_name}".html_safe, home_path(@building)
   parent :search_homes
 end
 
 crumb :building_room do
   @room = Room.find(params[:id])
   @building = @room.building
-  link "#{@room.room_number}", building_room_path(@building.id, @room.id)
+  link "<i class='fa-solid fa-door-closed'></i>#{@room.room_number}".html_safe, building_room_path(@building.id, @room.id)
   parent :home
 end
 # crumb :projects do

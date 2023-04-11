@@ -127,7 +127,7 @@
                   <td class="search-page-rooms-data">
                     <div id="favorites_<%= room.id %>"><%= render 'homes/favorites', room: room %></div>
                   </td>
-                  <td class="search-page-rooms-data"><i class="fa-solid fa-envelope"></i><%= link_to 'お問合わせ', "#" %></td>
+                  <td class="search-page-rooms-data"><i class="fa-solid fa-envelope" style='margin-right: 10px;'></i><%= link_to 'お問合わせ', "#" %></td>
                   <td class="search-page-rooms-data"><%= link_to "<i class='fa-solid fa-bars' style='margin-left: 10px;'></i>".html_safe, building_room_path(room.building.id, room.id) %></td>
                 </tr>
               <% end %>

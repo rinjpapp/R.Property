@@ -1,15 +1,46 @@
 <%= render "shared/second-header" %>
-  <%= render "shared/users-header" %>
+<%= render "shared/users-header" %>
 
-
-Applicantサイト
-
-<% @user_favorites.each do |favorite| %>
-  <div>
-    <%= favorite.room.building.building_name %>
-    <%= favorite.room.room_number %>
-  </div>
-<% end %>
+<div class="applicant-favorites-page">
+  <h3><%= current_user.nickname %>のお気に入りリスト</h3>
+  <% favorites = @user_favorites.group_by { |r| r.room.building.building_name } %>
+  <% favorites.each do |building_name, f| %>
+    <% building = Building.find_by(building_name: building_name) %>
+    <div class="favorite-lists-building">
+      <i class="fa-solid fa-building" style="margin-right: 10px;"></i><%= link_to building_name, home_path(building.id) %>
+    </div>
+    <div class="favorite-lists">
+      <table class="favorite-lists-table">
+        <thead class="favorite-lists-heading">
+          <tr>
+            <th></th>
+            <th>部屋</th>
+            <th>間取り</th>
+            <th>家賃</th>
+            <th>管理料</th>
+            <th>お気に入り</th>
+            <th>お問合わせ</th>
+            <th>詳細</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% f.each do |f| %>
+            <tr class="favorite-lists-r">
+              <td><i class="fa-solid fa-door-open"></i></td>
+              <td><%= link_to "#{f.room.room_number}", building_room_path(f.room.building.id, f.room.id) %></td>
+              <td><%= f.room.layout %></td>
+              <td><%= f.room.rent / 10000 %>万円</td>
+              <td><%= f.room.management_fee / 10000 %>万円</td>
+              <td><div id="favorites_<%= f.room.id %>"><%= render 'homes/favorites', room: f.room %></div></td>
+              <td><i class="fa-solid fa-envelope" style='margin-right: 10px;'></i><%= link_to 'お問合わせ', "#" %></td>
+              <td><%= link_to "<i class='fa-solid fa-bars' style='margin-left: 10px;'></i>".html_safe, building_room_path(f.room.building.id, f.room.id) %></td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+    </div>
+  <% end %>
+</div>
 <% if @user_favorites.empty? %>
   <h2>お気に入りはありません</h2>
 <% end %>

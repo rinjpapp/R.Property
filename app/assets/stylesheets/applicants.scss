@@ -1,7 +1,93 @@
 // Place all the styles related to the applicants controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
-header {
-  width: 100vw;
+$search-page-color: #067d86;
+$search-page-font: "Roboto", sans-serif;
+.applicant-favorites-page {
+  width: 47%;
   height: fit-content;
+  padding: 10px 5px;
+
+  h3 {
+    text-align: center;
+    font-size: larger;
+    font-weight: bolder;
+  }
+
+
+  .favorite-lists-building{
+      margin-left: 2%;
+
+    a {
+      text-decoration: none;
+      font-size: larger;
+      color: black;
+      font-weight: bolder;
+      &:hover {
+        font-size: 1.5rem;
+        color: rgba(0, 0, 0, 0.533);
+      }
+    }
+  }
+
+  .favorite-lists{
+    width: 100%;
+    padding-left: 2%;
+    height: fit-content;
+
+    .favorite-lists-table {
+      margin-bottom: 30px;
+      border-collapse: collapse;
+      width: 100%;
+      box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+      overflow: hidden;
+      border-radius: 10px;
+      background: white;
+
+      thead {
+        background: $search-page-color;
+        color: white;
+  
+        th {
+          font-size: 1.2rem;
+          padding: 0.3rem;
+          text-align: left;
+          font-family: $search-page-font;
+        }
+      }
+  
+      tbody {
+        tr {
+          &:nth-child(even) {
+            background: #f3f3f3;
+          }
+        }
+  
+        tr:hover {
+          background-color: #79767664;
+        }
+  
+        td {
+          padding: 0.3rem;
+          text-align: left;
+          font-size: 1.1rem;
+          font-family: $search-page-font;
+
+          &:hover {
+            font-size: 1.5rem;
+          }
+
+          a {
+            color: black;
+            text-decoration: none;
+            transition: all 0.3s ease-in-out;
+  
+            &:hover {
+              color: darken($search-page-color, 30%);
+            }
+          }
+        }
+      }
+    }
+  }
 }
