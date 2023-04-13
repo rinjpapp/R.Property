@@ -1,0 +1,36 @@
+<%= render "shared/second-header" %>
+<%= render "shared/admin-header" %>
+
+<div class="applicant-lists-page">
+  <div class="applicant-lists-title">
+    <h3><i class="fa-solid fa-rectangle-list" style="margin-right: 20px;"></i>申込者リスト</h3>
+  </div>
+  <div class="applicant-lists">
+    <table class="applicant-lists-table">
+      <thead class="applicant-lists-heading">
+        <tr>
+          <th></th>
+          <th>ユーザー名</th>
+          <th>名前</th>
+          <th>メールアドレス</th>
+          <th>電話番号</th>
+          <th></th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @user.each do |applicant| %>
+          <tr class="applicant-lists-r">
+            <td><i class="fa-solid fa-id-badge"></i></td>
+            <td><%= applicant.nickname %></td>
+            <td><%= applicant.individual.last_name  + "    " + applicant.individual.first_name %></td>
+            <td><%= link_to "<i class='fa-regular fa-envelope' style='margin-right: 10px;'></i>#{applicant.email}".html_safe, "#" %></td>
+            <td><%= link_to "<i class='fa-solid fa-square-phone' style='margin-right: 10px;'></i>#{applicant.individual.phone_number}".html_safe, "#" %></td>
+            <td><%= link_to "<i class='fa-solid fa-user-pen'></i>".html_safe, edit_user_registration_path(applicant.id) %></td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+<%= render "shared/footer" %>

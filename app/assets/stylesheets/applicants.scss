@@ -24,7 +24,6 @@ $search-page-font: "Roboto", sans-serif;
       color: black;
       font-weight: bolder;
       &:hover {
-        font-size: 1.5rem;
         color: rgba(0, 0, 0, 0.533);
       }
     }
@@ -72,10 +71,10 @@ $search-page-font: "Roboto", sans-serif;
           text-align: left;
           font-size: 1.1rem;
           font-family: $search-page-font;
-
           &:hover {
-            font-size: 1.5rem;
+          line-height: 50px;
           }
+
 
           a {
             color: black;
@@ -89,5 +88,80 @@ $search-page-font: "Roboto", sans-serif;
         }
       }
     }
+  }
+}
+.applicant-lists-page {
+  height: 100vh;
+  .applicant-lists-title {
+    margin-top: 20px;
+    width: 100%;
+    padding-bottom: 15px;
+    text-align: center;
+    h3{
+      font-size: 30px;
+      font-weight: bold;
+      color: rgb(11, 10, 10);
+    }
+  }
+  table{
+  margin: 10px 8% 30px;
+  width: 84%;
+  border-collapse:separate;
+  border-spacing: 0;
+  }
+
+  table th{
+    text-align: center;
+    color: white;
+    background: linear-gradient(#829ebc,#225588);
+    border-left: 1px solid #3c6690;
+    border-top: 1px solid #3c6690;
+    border-bottom: 1px solid #3c6690;
+    box-shadow: 0px 1px 1px rgba(255,255,255,0.3) inset;
+    width: auto;
+    padding: 10px 0;
+      &:first-child{
+        border-radius: 5px 0 0 0;
+      }
+      &:nth-child(2),
+      &:nth-child(3){
+        width: 17%;
+      }
+      &:nth-child(4),
+      &:nth-child(5){
+        width: 30%;
+      }
+      &:last-child{
+        border-radius: 0 5px 0 0;
+        border-right: 1px solid #3c6690;
+      }
+  }
+
+  table td{
+    text-align: center;
+    border-left: 1px solid #a8b7c5;
+    border-bottom: 1px solid #a8b7c5;
+    border-top:none;
+    box-shadow: 0px -3px 5px 1px #eee inset;
+    padding: 10px 0;
+    &:nth-child(4),
+    &:nth-child(5){
+      text-align: left;
+      padding-left: 7vw;
+      a {
+        text-decoration: none;
+        color: black;
+      }
+    }
+    &:last-child{
+      border-right: 1px solid #a8b7c5;
+    }
+  }
+  table tr:last-child td:first-child {
+    border-radius: 0 0 0 5px;
+  }
+
+  table tr:last-child td:last-child {
+    border-radius: 0 0 5px 0;
   }
 }
