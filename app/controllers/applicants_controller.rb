@@ -1,9 +1,14 @@
 class ApplicantsController < ApplicationController
-  before_action :authenticate_user!
+  before_action :authenticate_user!, only: :index
+  before_action :authenticate_admin!, only: :lists
 
   def index
     user = User.find_by(id: params[:user_id])
     @user_favorites = user.favorites
+  end
+
+  def lists
+    @user = User.where(status_id: 3)
   end
 
   private 
@@ -14,6 +19,12 @@ class ApplicantsController < ApplicationController
         redirect_to user_residents_path(current_user.id)
       end
     else
+      redirect_to root_path
+    end
+  end
+
+  def authenticate_admin!
+    unless admin_signed_in?
       redirect_to root_path
     end
   end
