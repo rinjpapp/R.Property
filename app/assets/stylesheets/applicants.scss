@@ -91,7 +91,7 @@ $search-page-font: "Roboto", sans-serif;
   }
 }
 .applicant-lists-page {
-  height: 100vh;
+  height: fit-content;
   .applicant-lists-title {
     margin-top: 20px;
     width: 100%;
@@ -127,9 +127,11 @@ $search-page-font: "Roboto", sans-serif;
       &:nth-child(3){
         width: 17%;
       }
-      &:nth-child(4),
+      &:nth-child(4){
+        width: 32%;
+      }
       &:nth-child(5){
-        width: 30%;
+        width: 23%;
       }
       &:last-child{
         border-radius: 0 5px 0 0;
@@ -147,7 +149,7 @@ $search-page-font: "Roboto", sans-serif;
     &:nth-child(4),
     &:nth-child(5){
       text-align: left;
-      padding-left: 7vw;
+      padding-left: 5vw;
       a {
         text-decoration: none;
         color: black;
