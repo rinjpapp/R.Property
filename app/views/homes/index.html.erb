@@ -67,10 +67,12 @@
         <%= link_to image_tag("company_logo.png", class: "company-logo-in-contact"), "/" %>
         <div class="dropDown">
           <ul class="dropDown__list">
-            <% if admin_signed_in? %>
-            <li class="dropDown__item"><%= link_to "logout", destroy_admin_session_path, method: :delete, class: "dropDown__link" %></li>
-            <% else %>
-            <li class="dropDown__item"><%= link_to "login", new_admin_session_path, class: "dropDown__link" %></li>
+            <% unless user_signed_in? %>
+              <% if admin_signed_in? %>
+              <li class="dropDown__item"><%= link_to "logout", destroy_admin_session_path, method: :delete, class: "dropDown__link" %></li>
+              <% else %>
+              <li class="dropDown__item"><%= link_to "login", new_admin_session_path, class: "dropDown__link" %></li>
+              <% end %>
             <% end %>
           </ul>
         </div>
