@@ -30,4 +30,8 @@ Rails.application.routes.draw do
   end
   post 'favorite/:id' => 'favorites#create', as: 'create_favorite'
   delete 'favorite/:id' => 'favorites#destroy', as: 'destroy_favorite'
+
+  get 'admin/applicants', to: 'applicants#lists'
+  get 'admin/residents', to: 'residents#lists'
+
 end
