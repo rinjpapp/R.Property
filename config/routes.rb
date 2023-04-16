@@ -15,7 +15,7 @@ Rails.application.routes.draw do
   end
   root to: 'homes#index'
   
-  resources :users, only: :index do
+  resources :users, only: [:edit, :update, :destory] do
     resources :residents, only: :index
     resources :applicants, only: :index
   end

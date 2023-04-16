@@ -1,0 +1,51 @@
+<%= render "shared/second-header" %>
+<%= render "shared/admin-header" %>
+
+<div class="applicant-lists-edit-page">
+  <%= form_with model: @user, url: user_path, local: true do |f| %>
+    <% if @user.status_id == 3 %>
+      <div class="applicant-lists-title">
+        <h3><i class="fa-solid fa-rectangle-list" style="margin-right: 20px;"></i>申込者リスト</h3>
+      </div>
+    <% else %>
+      <div class="applicant-lists-title">
+        <h3><i class="fa-solid fa-rectangle-list" style="margin-right: 20px;"></i>住居者リスト</h3>
+      </div>
+    <% end %>
+  <div class="applicant-lists">
+    <table class="applicant-lists-table">
+      <thead class="applicant-lists-heading">
+        <tr>
+          <th></th>
+          <th>ユーザー名</th>
+          <th>名前</th>
+          <th>メールアドレス</th>
+          <th>電話番号</th>
+          <th></th>
+        </tr>
+      </thead>
+      <tbody>
+          <tr class="applicant-lists-r">
+            <td><i class="fa-solid fa-id-badge"></i></td>
+            <td><%= @user.nickname %></td>
+            <td><%= @user.individual.last_name  + "    " + @user.individual.first_name %></td>
+            <td><%= link_to "<i class='fa-regular fa-envelope' style='margin-right: 10px;'></i>#{@user.email}".html_safe, "#" %></td>
+            <td><%= link_to "<i class='fa-solid fa-square-phone' style='margin-right: 10px;'></i>#{@user.individual.phone_number}".html_safe, "#" %></td>
+            <td><%= f.collection_select :status_id, Status.all, :id, :name, {}, {class:"collection_select", id:"status", style: "height: 2rem"} %></td>
+          </tr>
+      </tbody>
+    </table>
+    <% if @user.status_id == 3 %>
+      <div class="actions">
+        <%= f.submit "申込者から入居者に変更する" %>
+      </div>
+    <% else %>
+      <div class="actions">
+        <%= f.submit "入居者から申込者に変更する" %>
+      </div>
+    <% end %>
+  <% end %>
+  </div>
+</div>
+
+<%= render "shared/footer" %>

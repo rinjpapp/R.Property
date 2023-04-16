@@ -3,7 +3,7 @@
 
 <div class="applicant-lists-page">
   <div class="applicant-lists-title">
-    <h3><i class="fa-solid fa-rectangle-list" style="margin-right: 20px;"></i>住居者リスト</h3>
+    <h3><i class="fa-solid fa-rectangle-list" style="margin-right: 20px;"></i>入居者リスト</h3>
   </div>
   <div class="applicant-lists">
     <table class="applicant-lists-table">
@@ -25,7 +25,7 @@
             <td><%= resident.individual.last_name  + "    " + resident.individual.first_name %></td>
             <td><%= link_to "<i class='fa-regular fa-envelope' style='margin-right: 10px;'></i>#{resident.email}".html_safe, "#" %></td>
             <td><%= link_to "<i class='fa-solid fa-square-phone' style='margin-right: 10px;'></i>#{resident.individual.phone_number}".html_safe, "#" %></td>
-            <td><%= link_to "<i class='fa-solid fa-user-pen'></i>".html_safe, edit_user_registration_path(resident.id) %></td>
+            <td><%= link_to "<i class='fa-solid fa-user-pen'></i>".html_safe, edit_user_path(resident.id) %></td>
           </tr>
         <% end %>
       </tbody>
